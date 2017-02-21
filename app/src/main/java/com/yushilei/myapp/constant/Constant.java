@@ -10,4 +10,5 @@ public interface Constant {
     String DRAG = "拖拽";
     String VIEW_PAGER = "ViewPager";
     String CHANGE = "CHANGE";
+    String CHANGE2 = "CHANGE2";
 }
