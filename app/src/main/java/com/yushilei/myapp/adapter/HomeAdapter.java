@@ -2,6 +2,7 @@ package com.yushilei.myapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
 import com.yushilei.myapp.ui.DragActivity;
+import com.yushilei.myapp.ui.ViewPagerActivity;
 import com.yushilei.myapp.widget.DragView;
 
 import java.util.LinkedList;
@@ -72,6 +74,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
             switch (((TextView) v).getText().toString()) {
                 case Constant.DRAG:
                     context.startActivity(new Intent(context, DragActivity.class));
+                    break;
+                case Constant.VIEW_PAGER:
+                    context.startActivity(new Intent(context, ViewPagerActivity.class));
                     break;
             }
 

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<String> data = new LinkedList<>();
         data.add(Constant.DRAG);
+        data.add(Constant.VIEW_PAGER);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
