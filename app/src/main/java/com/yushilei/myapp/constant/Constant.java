@@ -9,4 +9,5 @@ package com.yushilei.myapp.constant;
 public interface Constant {
     String DRAG = "拖拽";
     String VIEW_PAGER = "ViewPager";
+    String CHANGE = "CHANGE";
 }
