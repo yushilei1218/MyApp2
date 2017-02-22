@@ -214,7 +214,6 @@ public class RotateView extends ViewGroup {
             return 3;
         }
         return 4;
-
     }
 
     public void setMCurAngle(float mCurAngle) {
