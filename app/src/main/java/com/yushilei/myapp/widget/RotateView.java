@@ -2,6 +2,7 @@ package com.yushilei.myapp.widget;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.ImageFormat;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -23,6 +24,8 @@ public class RotateView extends ViewGroup {
      * 当前已旋转的角度 ，当改变该角度时，并重新布局则达到旋转的效果
      */
     private float mCurAngle = 45f;
+
+    private float mStartAngle;
     /**
      * 当前ViewGroup 旋转的中心点坐标
      */
@@ -42,6 +45,9 @@ public class RotateView extends ViewGroup {
     private int touchSlop;
     private float mLastX;
     private float mLastY;
+    private long mStartRotateTime;
+    private static final float ROTATE_RATE = 500;
+    private RotateRunnable action;
 
     public RotateView(Context context) {
         this(context, null);
@@ -213,11 +219,18 @@ public class RotateView extends ViewGroup {
         boolean intercepted = false;
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (isFling) {
+                    isFling = false;
+                    removeCallbacks(action);
+                    return true;
+                }
                 break;
             case MotionEvent.ACTION_MOVE: {
                 float diffX = Math.abs(x - mLastX);
                 float diffY = Math.abs(y - mLastY);
                 if (diffX >= touchSlop || diffY >= touchSlop) {
+                    mStartAngle = mCurAngle;
+                    mStartRotateTime = System.currentTimeMillis();
                     intercepted = true;
                 }
             }
@@ -255,7 +268,14 @@ public class RotateView extends ViewGroup {
             }
             break;
             case MotionEvent.ACTION_UP: {
-
+                long rotateDuration = System.currentTimeMillis() - mStartRotateTime;
+                float sweepAngle = mCurAngle - mStartAngle;
+                float speed = sweepAngle * 1000 / rotateDuration;
+                Log.i(TAG, "speed=" + speed);
+                if (Math.abs(speed) > ROTATE_RATE) {
+                    action = new RotateRunnable(speed);
+                    post(action);
+                }
             }
             break;
         }
@@ -275,6 +295,29 @@ public class RotateView extends ViewGroup {
             return y >= mCenterPoint.y ? 1 : 4;
         } else {
             return y < mCenterPoint.y ? 2 : 3;
+        }
+    }
+
+    private boolean isFling;
+
+    public class RotateRunnable implements Runnable {
+        RotateRunnable(float speed) {
+            this.speed = speed;
+        }
+
+        float speed;
+
+        @Override
+        public void run() {
+            if (Math.abs(speed) < 20) {
+                isFling = false;
+                return;
+            }
+            float addAngle = mCurAngle + (speed / 30);
+            setMCurAngle(addAngle);
+            isFling = true;
+            speed /= 1.0666F;
+            postDelayed(this, 30);
         }
     }
 }
