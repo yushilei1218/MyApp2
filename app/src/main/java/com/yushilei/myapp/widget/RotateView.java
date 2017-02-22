@@ -2,7 +2,6 @@ package com.yushilei.myapp.widget;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.ImageFormat;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -23,14 +22,15 @@ public class RotateView extends ViewGroup {
     /**
      * 当前已旋转的角度 ，当改变该角度时，并重新布局则达到旋转的效果
      */
-    private float mCurAngle = 1f;
-
-    private float mStartAngle;
+    private float mCurAngle = 0f;
+    /**
+     * 记录每次旋转开始时的角度
+     */
+    private float mStartRotateAngle;
     /**
      * 当前ViewGroup 旋转的中心点坐标
      */
     private PointF mCenterPoint;
-
     /**
      * 围绕中心点旋转的半径
      */
@@ -56,7 +56,9 @@ public class RotateView extends ViewGroup {
      * 触发弹性旋转的边界值
      */
     private static final float ROTATE_RATE = 500;
-
+    /**
+     * 弹性旋转Runnable
+     */
     private RotateRunnable action;
     /**
      * 当前是否处于弹性旋转状态
@@ -245,7 +247,7 @@ public class RotateView extends ViewGroup {
                 float diffX = Math.abs(x - mLastX);
                 float diffY = Math.abs(y - mLastY);
                 if (diffX >= touchSlop || diffY >= touchSlop) {
-                    mStartAngle = mCurAngle;
+                    mStartRotateAngle = mCurAngle;
                     mStartRotateTime = System.currentTimeMillis();
                     intercepted = true;
                 }
@@ -285,7 +287,7 @@ public class RotateView extends ViewGroup {
             break;
             case MotionEvent.ACTION_UP: {
                 long rotateDuration = System.currentTimeMillis() - mStartRotateTime;
-                float sweepAngle = mCurAngle - mStartAngle;
+                float sweepAngle = mCurAngle - mStartRotateAngle;
                 float speed = sweepAngle * 1000 / rotateDuration;
                 Log.i(TAG, "speed=" + speed);
                 if (Math.abs(speed) > ROTATE_RATE) {
