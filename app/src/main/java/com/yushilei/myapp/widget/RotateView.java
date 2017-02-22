@@ -23,7 +23,7 @@ public class RotateView extends ViewGroup {
     /**
      * 当前已旋转的角度 ，当改变该角度时，并重新布局则达到旋转的效果
      */
-    private float mCurAngle = 45f;
+    private float mCurAngle = 1f;
 
     private float mStartAngle;
     /**
@@ -43,11 +43,25 @@ public class RotateView extends ViewGroup {
      * 系统可检测的最小滑动距离
      */
     private int touchSlop;
+    /**
+     * 记录每次MotionEvent 的坐标值
+     */
     private float mLastX;
     private float mLastY;
+    /**
+     * 记录开始滑动的时间
+     */
     private long mStartRotateTime;
+    /**
+     * 触发弹性旋转的边界值
+     */
     private static final float ROTATE_RATE = 500;
+
     private RotateRunnable action;
+    /**
+     * 当前是否处于弹性旋转状态
+     */
+    private boolean isFling;
 
     public RotateView(Context context) {
         this(context, null);
@@ -78,14 +92,17 @@ public class RotateView extends ViewGroup {
         mCenterPoint.y = height / 2;
         //初始化旋转的半径
         mR = ((Math.min(width, height) / 2d) * 0.6d);
-
+        Log.i(TAG, "Angle=" + mCurAngle + " Cx=" + mCenterPoint.x + " Cy=" + mCenterPoint.y);
         if (getChildCount() > 0) {
             //每相邻的Child的角度间距
             float mPerAngle = 360f / getChildCount();
             //根据角度开启每个Child 排版过程
             for (int i = 0; i < getChildCount(); i++) {
-                //当前Child角度 保证其在Child在 0<=
+                //当前Child角度 保证其在Child在 360>angle>=0
                 float angle = (mCurAngle + mPerAngle * i) % 360f;
+                if (angle < 0) {
+                    angle = 360f - Math.abs(angle) % 360f;
+                }
                 View child = getChildAt(i);
 
                 //位于哪个象限
@@ -97,7 +114,7 @@ public class RotateView extends ViewGroup {
                 //根据正切值获取A边边长
                 double edgeA = getEdgeA(tanA);//A边
                 double edgeB = edgeA == 0 ? mR : edgeA / tanA;//B边
-
+                Log.i(TAG, "child=" + i + " 象限=" + quadrant);
                 //根据child所在象限 及 A边 B边 计算Child中心点位置坐标
                 computeChildLocation(quadrant, edgeA, edgeB);
 
@@ -298,7 +315,6 @@ public class RotateView extends ViewGroup {
         }
     }
 
-    private boolean isFling;
 
     public class RotateRunnable implements Runnable {
         RotateRunnable(float speed) {
