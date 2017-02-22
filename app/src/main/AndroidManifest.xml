@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DragActivity" />
-        <activity android:name=".ui.ViewPagerActivity"></activity>
+        <activity android:name=".ui.ViewPagerActivity" />
+        <activity android:name=".ui.CCBActivity"></activity>
     </application>
 
 </manifest>

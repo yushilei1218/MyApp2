@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
+import com.yushilei.myapp.ui.CCBActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
 import com.yushilei.myapp.widget.DragView;
@@ -77,6 +78,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.VIEW_PAGER:
                     context.startActivity(new Intent(context, ViewPagerActivity.class));
+                    break;
+                case Constant.CCB:
+                    context.startActivity(new Intent(context, CCBActivity.class));
                     break;
             }
 

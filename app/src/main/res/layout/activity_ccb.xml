@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ccb"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.yushilei.myapp.ui.CCBActivity">
+
+    <Button
+        android:id="@+id/btn0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anim" />
+
+    <com.yushilei.myapp.widget.RotateView
+        android:id="@+id/ratate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e1e0e0">
+
+        <TextView
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/assitant_msg_home_cxzh"
+            android:gravity="center"
+            android:text="测试1" />
+
+        <TextView
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/assitant_msg_home_debt"
+            android:gravity="center"
+            android:text="测试2" />
+
+        <TextView
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/assitant_msg_home_dlbx"
+            android:gravity="center"
+            android:text="测试3" />
+
+        <TextView
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/assitant_msg_home_fiances_tock"
+            android:gravity="center"
+            android:text="测试4" />
+
+        <TextView
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/assitant_msg_home_fund_event"
+            android:gravity="center"
+            android:text="测试5" />
+
+        <TextView
+            android:id="@+id/btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/assitant_msg_home_jifen"
+            android:gravity="center"
+            android:text="测试6" />
+    </com.yushilei.myapp.widget.RotateView>
+
+</LinearLayout>
