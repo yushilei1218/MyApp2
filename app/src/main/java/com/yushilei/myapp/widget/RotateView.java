@@ -233,17 +233,21 @@ public class RotateView extends ViewGroup {
         boolean intercepted = false;
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (isFling) {
+                //Down首先判断当前是否处于弹性旋转状态
+                if (isFling) {//如果是则重置状态，并移除弹性旋转，也就是按下立刻停止旋转
                     isFling = false;
                     removeCallbacks(action);
                     return true;
                 }
                 break;
             case MotionEvent.ACTION_MOVE: {
+                //判断滑动的距离 只有大于系统的可识别滑动距离则容器拦截事件
                 float diffX = Math.abs(x - mLastX);
                 float diffY = Math.abs(y - mLastY);
                 if (diffX >= touchSlop || diffY >= touchSlop) {
+                    //记录开始旋转的角度
                     mStartRotateAngle = mCurAngle;
+                    //记录开始旋转的时间
                     mStartRotateTime = System.currentTimeMillis();
                     intercepted = true;
                 }
@@ -265,25 +269,27 @@ public class RotateView extends ViewGroup {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE: {
+                //计算上一次事件所在的角度
                 float startAngle = getAngle(mLastX, mLastY);
+                //计算本次事件所在的角度
                 float endAngle = getAngle(x, y);
-
                 float changeAngle = startAngle - endAngle;
-
+                //获取当前事件所在的象限
                 int quadrant = getQuadrant(x, y);
-
                 float curAngle;
                 if (quadrant == 1 || quadrant == 4) {
                     curAngle = mCurAngle + changeAngle;
                 } else {
                     curAngle = mCurAngle - changeAngle;
                 }
+                //设置当前旋转角度并重新布局
                 setMCurAngle(curAngle);
             }
             break;
             case MotionEvent.ACTION_UP: {
                 long rotateDuration = System.currentTimeMillis() - mStartRotateTime;
                 float sweepAngle = mCurAngle - mStartRotateAngle;
+                //计算每秒活动的角度
                 float speed = sweepAngle * 1000 / rotateDuration;
                 Log.i(TAG, "speed=" + speed);
                 if (Math.abs(speed) > ROTATE_RATE) {
