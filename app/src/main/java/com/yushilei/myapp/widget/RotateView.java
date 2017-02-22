@@ -78,7 +78,7 @@ public class RotateView extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //对每个Child进行测量
+        //1、对每个Child进行测量 在测量之后才能获取到Child的 MeasureHeight 和MeasureWidth
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             measureChild(getChildAt(i), widthMeasureSpec, heightMeasureSpec);
@@ -89,38 +89,34 @@ public class RotateView extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int width = getWidth();
         int height = getHeight();
-        //初始化旋转的中心点
+        //2、初始化旋转的中心点
         mCenterPoint.x = width / 2;
         mCenterPoint.y = height / 2;
-        //初始化旋转的半径
+        //3、初始化旋转的半径
         mR = ((Math.min(width, height) / 2d) * 0.6d);
         Log.i(TAG, "Angle=" + mCurAngle + " Cx=" + mCenterPoint.x + " Cy=" + mCenterPoint.y);
         if (getChildCount() > 0) {
-            //每相邻的Child的角度间距
+            //4、每相邻的Child的角度间距
             float mPerAngle = 360f / getChildCount();
-            //根据角度开启每个Child 排版过程
+            //5、根据角度开启每个Child 排版过程
             for (int i = 0; i < getChildCount(); i++) {
-                //当前Child角度 保证其在Child在 360>angle>=0
+                //6、计算当前Child角度 保证其在Child在 360>angle>=0
                 float angle = (mCurAngle + mPerAngle * i) % 360f;
-                if (angle < 0) {
+                if (angle < 0) { //比如Child当前角度为-30，那么它其实就是 360-30=330度是一样的
                     angle = 360f - Math.abs(angle) % 360f;
                 }
                 View child = getChildAt(i);
-
-                //位于哪个象限
+                //7、计算当前Child位于哪个象限
                 int quadrant = getQuadrant(angle);
-
-                //获取正切值 可能为0
+                //8、计算该角度正切值 可能为0
                 double tanA = getTanA(quadrant, angle);
-
-                //根据正切值获取A边边长
+                //9、根据正切值获取A边边长
                 double edgeA = getEdgeA(tanA);//A边
                 double edgeB = edgeA == 0 ? mR : edgeA / tanA;//B边
                 Log.i(TAG, "child=" + i + " 象限=" + quadrant);
-                //根据child所在象限 及 A边 B边 计算Child中心点位置坐标
+                //10、根据child所在象限 及 A边 B边 计算Child中心点位置坐标
                 computeChildLocation(quadrant, edgeA, edgeB);
-
-                //根据Child中心点坐标及Child大小 进行布局
+                //11、根据Child中心点坐标及Child大小 进行布局
                 layoutChild(child);
             }
         }
