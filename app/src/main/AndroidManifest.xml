@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".ui.DragActivity" />
         <activity android:name=".ui.ViewPagerActivity" />
-        <activity android:name=".ui.CCBActivity"></activity>
+        <activity android:name=".ui.CCBActivity" />
+        <activity android:name=".ui.TabLayoutActivity"></activity>
     </application>
 
 </manifest>
