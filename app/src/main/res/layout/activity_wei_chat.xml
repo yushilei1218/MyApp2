@@ -12,14 +12,18 @@
 
     <com.yushilei.myapp.widget.RefreshView
         android:id="@+id/refresh"
-        android:background="#1c1c1c"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#1c1c1c">
 
         <ListView
             android:id="@+id/lv"
-            android:background="#f0f0f0"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="#f0f0f0" />
+
+        <include
+
+            layout="@layout/header_refresh" />
     </com.yushilei.myapp.widget.RefreshView>
 </RelativeLayout>
