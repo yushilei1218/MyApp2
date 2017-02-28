@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
+import com.yushilei.myapp.ui.BezierActivity;
 import com.yushilei.myapp.ui.CCBActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
+import com.yushilei.myapp.ui.WeiChatActivity;
 import com.yushilei.myapp.widget.DragView;
 
 import java.util.LinkedList;
@@ -85,6 +87,12 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.PAGER:
                     context.startActivity(new Intent(context, TabLayoutActivity.class));
+                    break;
+                case Constant.Bezier:
+                    context.startActivity(new Intent(context, BezierActivity.class));
+                    break;
+                case Constant.Refresh:
+                    context.startActivity(new Intent(context, WeiChatActivity.class));
                     break;
             }
 

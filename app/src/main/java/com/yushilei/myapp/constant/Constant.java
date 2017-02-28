@@ -11,4 +11,6 @@ public interface Constant {
     String VIEW_PAGER = "ViewPager";
     String CCB = "CCB";
     String PAGER = "PAGER";
+    String Bezier = "Bezier";
+    String Refresh = "Refresh";
 }

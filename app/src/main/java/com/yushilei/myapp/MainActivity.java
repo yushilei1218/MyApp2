@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.VIEW_PAGER);
         data.add(Constant.CCB);
         data.add(Constant.PAGER);
+        data.add(Constant.Bezier);
+        data.add(Constant.Refresh);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

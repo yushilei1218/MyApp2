@@ -18,7 +18,9 @@
         <activity android:name=".ui.DragActivity" />
         <activity android:name=".ui.ViewPagerActivity" />
         <activity android:name=".ui.CCBActivity" />
-        <activity android:name=".ui.TabLayoutActivity"></activity>
+        <activity android:name=".ui.TabLayoutActivity" />
+        <activity android:name=".ui.BezierActivity" />
+        <activity android:name=".ui.WeiChatActivity"></activity>
     </application>
 
 </manifest>
