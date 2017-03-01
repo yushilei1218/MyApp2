@@ -20,7 +20,8 @@
         <activity android:name=".ui.CCBActivity" />
         <activity android:name=".ui.TabLayoutActivity" />
         <activity android:name=".ui.BezierActivity" />
-        <activity android:name=".ui.WeiChatActivity"></activity>
+        <activity android:name=".ui.WeiChatActivity" />
+        <activity android:name=".ui.ConstraintLayoutActivity"></activity>
     </application>
 
 </manifest>

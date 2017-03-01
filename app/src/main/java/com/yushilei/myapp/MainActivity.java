@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.PAGER);
         data.add(Constant.Bezier);
         data.add(Constant.Refresh);
+        data.add(Constant.Constraint);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

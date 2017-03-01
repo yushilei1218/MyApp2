@@ -22,8 +22,8 @@ public class BezierView extends View {
 
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     //x正数  y 负数
-    private Point targetPoint = new Point();
-    private Point touchPoint = new Point();
+    private Point targetPoint = new Point();//中心原点
+    private Point touchPoint = new Point();//
     private Point controlPoint = new Point();
     private int mR;
 

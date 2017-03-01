@@ -13,6 +13,7 @@ import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
 import com.yushilei.myapp.ui.BezierActivity;
 import com.yushilei.myapp.ui.CCBActivity;
+import com.yushilei.myapp.ui.ConstraintLayoutActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
@@ -93,6 +94,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Refresh:
                     context.startActivity(new Intent(context, WeiChatActivity.class));
+                    break;
+                case Constant.Constraint:
+                    context.startActivity(new Intent(context, ConstraintLayoutActivity.class));
                     break;
             }
 
