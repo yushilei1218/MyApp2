@@ -21,7 +21,20 @@
         <activity android:name=".ui.TabLayoutActivity" />
         <activity android:name=".ui.BezierActivity" />
         <activity android:name=".ui.WeiChatActivity" />
-        <activity android:name=".ui.ConstraintLayoutActivity"></activity>
+        <activity android:name=".ui.ConstraintLayoutActivity" />
+        <activity android:name=".ui.RemoteViewsActivity" />
+
+        <receiver
+            android:name=".receiver.MyAppWidgetProvider"
+            android:enabled="true">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info" />
+            <intent-filter>
+                <action android:name="com.yushilei.chapter5.action" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

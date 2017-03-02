@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Bezier);
         data.add(Constant.Refresh);
         data.add(Constant.Constraint);
+        data.add(Constant.RemoteViews);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

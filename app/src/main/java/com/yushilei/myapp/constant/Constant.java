@@ -14,4 +14,5 @@ public interface Constant {
     String Bezier = "Bezier";
     String Refresh = "Refresh";
     String Constraint = "Constraint";
+    String RemoteViews = "RemoteViews";
 }
