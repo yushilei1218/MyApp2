@@ -1,5 +1,8 @@
 package com.yushilei.myapp.widget;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,7 +16,12 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 
+import com.yushilei.myapp.R;
 import com.yushilei.myapp.util.Circle;
 import com.yushilei.myapp.util.CircleUtil;
 
@@ -27,7 +35,6 @@ public class BezierView extends View {
     private static final String TAG = "BezierView";
 
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
     /**
      * 目标点坐标
      */
@@ -57,9 +64,17 @@ public class BezierView extends View {
      */
     private boolean isDrag = false;
     /**
+     * 是否分割目标和touch圆
+     */
+    private boolean isSplit = false;
+    /**
+     * 状态：是否清除内容
+     */
+    private boolean isDiscard = false;
+    /**
      * 可触发Drag的touch区域
      */
-    private Rect dragRange;
+    private Rect mDragRange;
     /**
      * 作为4个交点 及control点 的闭合path
      */
@@ -80,6 +95,10 @@ public class BezierView extends View {
      */
     private int mTextOffset;
 
+    private static final float mSplitRate = 2;
+
+    private double mSplitDistance;
+
     public BezierView(Context context) {
         super(context);
     }
@@ -87,14 +106,13 @@ public class BezierView extends View {
     public BezierView(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint.setColor(Color.RED);
-        paint2.setColor(Color.BLUE);
         paint.setStyle(Paint.Style.FILL);
-        paint2.setStyle(Paint.Style.FILL);
-        paint2.setStrokeWidth(1);
 
-        textPaint.setTextSize(24);
+        float dimension = context.getResources().getDimension(R.dimen.textSize);
+        textPaint.setTextSize(dimension);
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setColor(Color.WHITE);
+
         Paint.FontMetricsInt fontMetricsInt = textPaint.getFontMetricsInt();
         mTextOffset = (Math.abs(fontMetricsInt.descent) - Math.abs(fontMetricsInt.ascent)) / 2;
 
@@ -107,49 +125,46 @@ public class BezierView extends View {
         targetPoint.y = getHeight() / 2;
 
         mR = Math.min(getWidth(), getHeight()) / 10;
-        dragRange = new Rect(targetPoint.x - mR, targetPoint.y - mR, targetPoint.x + mR, targetPoint.y + mR);
+
+        mDragRange = new Rect(targetPoint.x - mR, targetPoint.y - mR, targetPoint.x + mR, targetPoint.y + mR);
+
+        mSplitDistance = mSplitRate * mR;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (isDiscard) {
 
-        canvas.drawCircle(targetPoint.x, targetPoint.y, mR, paint);
-        if (!TextUtils.isEmpty(text)) {
-            canvas.drawText(text, targetPoint.x, targetPoint.y - mTextOffset, textPaint);
-        }
+        } else {
+            if (!isSplit) {
 
-        if (isDrag) {
-            canvas.drawCircle(touchPoint.x, touchPoint.y, mR, paint);
-            if (needDrawClosePathDistance >= mR + 1) {
-                mPath.reset();
+                canvas.drawCircle(targetPoint.x, targetPoint.y, mR, paint);
 
-                mPath.moveTo(focusPointA.x, focusPointA.y);
-                mPath.quadTo(controlPoint.x, controlPoint.y, focusPointC.x, focusPointC.y);
-                mPath.lineTo(focusPointD.x, focusPointD.y);
-                mPath.quadTo(controlPoint.x, controlPoint.y, focusPointB.x, focusPointB.y);
-                mPath.close();
-                paint2.setColor(Color.RED);
-                canvas.drawPath(mPath, paint2);
             }
-            canvas.drawText(text, touchPoint.x, touchPoint.y, textPaint);
+            if (isDrag) {
+                canvas.drawCircle(touchPoint.x, touchPoint.y, mR, paint);
+                if (!isSplit && needDrawClosePathDistance > mR) {
+                    mPath.reset();
+                    mPath.moveTo(focusPointA.x, focusPointA.y);
+                    mPath.quadTo(controlPoint.x, controlPoint.y, focusPointC.x, focusPointC.y);
+                    mPath.lineTo(focusPointD.x, focusPointD.y);
+                    mPath.quadTo(controlPoint.x, controlPoint.y, focusPointB.x, focusPointB.y);
+                    mPath.close();
+                    canvas.drawPath(mPath, paint);
+                }
+                canvas.drawText(text, touchPoint.x, touchPoint.y - mTextOffset, textPaint);
+            }
+            if (!isSplit) {
+                if (!TextUtils.isEmpty(text)) {
+                    canvas.drawText(text, targetPoint.x, targetPoint.y - mTextOffset, textPaint);
+                }
+            }
         }
-
-
-        canvas.drawPoint(targetPoint.x, targetPoint.y, paint2);
-        canvas.drawPoint(controlPoint.x, controlPoint.y, paint2);
-        canvas.drawPoint(touchPoint.x, touchPoint.y, paint2);
-        paint2.setColor(Color.BLACK);
-        canvas.drawPoint(focusPointA.x, focusPointA.y, paint2);
-        paint2.setColor(Color.GREEN);
-        canvas.drawPoint(focusPointB.x, focusPointB.y, paint2);
-        paint2.setColor(Color.YELLOW);
-        canvas.drawPoint(focusPointC.x, focusPointC.y, paint2);
-        paint2.setColor(Color.MAGENTA);
-        canvas.drawPoint(focusPointD.x, focusPointD.y, paint2);
-
-
     }
+
+    Point cache = new Point();
+    boolean isRight = true;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -159,7 +174,7 @@ public class BezierView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (dragRange.contains((int) x, (int) y)) {
+                if (mDragRange.contains((int) x, (int) y)) {
                     isDrag = true;
                     touchPoint.x = (int) x;
                     touchPoint.y = (int) y;
@@ -173,10 +188,23 @@ public class BezierView extends View {
                     computeControl();
                 }
                 break;
-            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_UP: {
+                isDiscard = needDrawClosePathDistance >= mSplitDistance;
                 isDrag = false;
-                mPath.reset();
-                break;
+                isSplit = false;
+                if (!isDiscard) {//开启一个弹跳的动画
+                    setPivotY(getHeight() / 2);
+                    setPivotX(getWidth() / 2);
+                    TranslateAnimation animation = new TranslateAnimation(-5, 10, -5, 10);
+                    animation.setInterpolator(new AccelerateDecelerateInterpolator());
+                    animation.setRepeatMode(Animation.REVERSE);
+                    animation.setRepeatCount(4);
+                    animation.setDuration(60);
+                    BezierView.this.startAnimation(animation);
+                }
+                invalidate();
+            }
+            break;
         }
         if (isDrag) {
             invalidate();
@@ -188,6 +216,13 @@ public class BezierView extends View {
         controlPoint.x = (targetPoint.x + touchPoint.x) / 2;
         controlPoint.y = (targetPoint.y + touchPoint.y) / 2;
         needDrawClosePathDistance = Math.sqrt(Math.pow(targetPoint.x - controlPoint.x, 2) + Math.pow(targetPoint.y - controlPoint.y, 2));
+
+        if (needDrawClosePathDistance >= mSplitDistance) {
+            isSplit = true;
+        }
+        if (isSplit) {
+            return;
+        }
         double R2 = Math.sqrt(Math.pow(targetPoint.x - controlPoint.x, 2) + Math.pow(targetPoint.y - controlPoint.y, 2) - mR * mR);
 
         //3个圆
