@@ -13,6 +13,6 @@ public interface Constant {
     String PAGER = "PAGER";
     String Bezier = "Bezier";
     String Refresh = "Refresh";
-    String Constraint = "Constraint";
+    String Constraint = "Transparent";
     String RemoteViews = "RemoteViews";
 }

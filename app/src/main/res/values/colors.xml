@@ -6,4 +6,5 @@
 
 
     <color name="color_blue">#0008ff</color>
+    <color name="transparent">#00000000</color>
 </resources>

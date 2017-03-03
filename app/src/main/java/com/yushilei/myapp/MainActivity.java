@@ -3,6 +3,7 @@ package com.yushilei.myapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.yushilei.myapp.adapter.HomeAdapter;
 import com.yushilei.myapp.constant.Constant;
@@ -16,6 +17,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.grid)
     GridView grid;
+    @BindView(R.id.round)
+    ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +39,6 @@ public class MainActivity extends AppCompatActivity {
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
+
     }
 }

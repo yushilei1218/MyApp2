@@ -10,5 +10,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.yushilei.myapp.ui.ConstraintLayoutActivity">
 
+    <com.yushilei.myapp.widget.DragView
+        android:id="@+id/drag2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="你好" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/lv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#8d8a8a" />
+        </LinearLayout>
+    </com.yushilei.myapp.widget.DragView>
 
 </RelativeLayout>

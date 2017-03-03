@@ -21,7 +21,9 @@
         <activity android:name=".ui.TabLayoutActivity" />
         <activity android:name=".ui.BezierActivity" />
         <activity android:name=".ui.WeiChatActivity" />
-        <activity android:name=".ui.ConstraintLayoutActivity" />
+        <activity
+            android:name=".ui.ConstraintLayoutActivity"
+            android:theme="@style/transparency" />
         <activity android:name=".ui.RemoteViewsActivity" />
 
         <receiver

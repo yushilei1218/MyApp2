@@ -17,7 +17,7 @@ import com.yushilei.myapp.R;
  * @desc
  */
 
-public class DragView extends FrameLayout{
+public class DragView extends FrameLayout {
 
     private float mLastX;
     private float mLastY;
@@ -56,7 +56,7 @@ public class DragView extends FrameLayout{
                 float diffY = y - mLastY;
                 float diffX = x - mLastX;
                 if (diffY > touchSlop && diffY > Math.abs(diffX)) {
-                    ListView lv = (ListView) findViewById(R.id.lv);
+
                     //ListView childAt = (ListView) getChildAt(0);
                     boolean b = lv.getFirstVisiblePosition() == 0;
                     boolean b1 = lv.getChildAt(0).getTop() >= 0;
@@ -108,6 +108,12 @@ public class DragView extends FrameLayout{
         mLastX = x;
         mLastY = y;
         return true;
+    }
+
+    ListView lv;
+
+    public void setLv(ListView lv) {
+        this.lv = lv;
     }
 
     @Override

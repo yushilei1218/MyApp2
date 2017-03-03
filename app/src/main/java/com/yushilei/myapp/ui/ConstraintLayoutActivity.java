@@ -2,9 +2,14 @@ package com.yushilei.myapp.ui;
 
 
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.yushilei.myapp.BaseActivity;
 import com.yushilei.myapp.R;
+import com.yushilei.myapp.widget.DragView;
+
+import java.util.LinkedList;
 
 public class ConstraintLayoutActivity extends BaseActivity {
 
@@ -15,18 +20,15 @@ public class ConstraintLayoutActivity extends BaseActivity {
 
     @Override
     protected void onInitViews() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("TAG", "Integer.MAX_VALUE=" + Integer.MAX_VALUE);
-                long time1 = System.currentTimeMillis();
-                for (int i = 0; i < Integer.MAX_VALUE; i++) {
-                    int a = 1 + 1;
-                }
-                long time2 = System.currentTimeMillis();
-                long l = (time2 - time1) / 1000;
-                Log.d("TAG", "time=" + l + "s");
-            }
-        }).start();
+        ListView lv = (ListView) findViewById(R.id.lv2);
+        DragView viewById = (DragView) findViewById(R.id.drag2);
+        viewById.setLv(lv);
+
+        LinkedList<String> data = new LinkedList<>();
+        for (int i = 0; i < 100; i++) {
+            data.add("第" + i + "条");
+        }
+        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data));
+
     }
 }
