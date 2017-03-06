@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Refresh);
         data.add(Constant.Constraint);
         data.add(Constant.RemoteViews);
+        data.add(Constant.Windows);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

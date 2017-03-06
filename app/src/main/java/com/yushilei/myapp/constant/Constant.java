@@ -15,4 +15,5 @@ public interface Constant {
     String Refresh = "Refresh";
     String Constraint = "Transparent";
     String RemoteViews = "RemoteViews";
+    String Windows = "Windows";
 }
