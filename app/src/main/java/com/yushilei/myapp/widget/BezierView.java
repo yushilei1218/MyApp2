@@ -9,7 +9,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -38,15 +40,15 @@ public class BezierView extends View {
     /**
      * 目标点坐标
      */
-    private Point targetPoint = new Point();
+    private PointF targetPoint = new PointF();
     /**
      * 触摸点坐标
      */
-    private Point touchPoint = new Point();
+    private PointF touchPoint = new PointF();
     /**
      * 目标点坐标 与 触摸点坐标 连线的中间点坐标 也就是control点
      */
-    private Point controlPoint = new Point();
+    private PointF controlPoint = new PointF();
 
     /**
      * Control点与2圆的4个交点
@@ -74,7 +76,7 @@ public class BezierView extends View {
     /**
      * 可触发Drag的touch区域
      */
-    private Rect mDragRange;
+    private RectF mDragRange;
     /**
      * 作为4个交点 及control点 的闭合path
      */
@@ -126,7 +128,7 @@ public class BezierView extends View {
 
         mR = Math.min(getWidth(), getHeight()) / 10;
 
-        mDragRange = new Rect(targetPoint.x - mR, targetPoint.y - mR, targetPoint.x + mR, targetPoint.y + mR);
+        mDragRange = new RectF(targetPoint.x - mR, targetPoint.y - mR, targetPoint.x + mR, targetPoint.y + mR);
 
         mSplitDistance = mSplitRate * mR;
     }
@@ -163,9 +165,6 @@ public class BezierView extends View {
         }
     }
 
-    Point cache = new Point();
-    boolean isRight = true;
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
@@ -193,14 +192,18 @@ public class BezierView extends View {
                 isDrag = false;
                 isSplit = false;
                 if (!isDiscard) {//开启一个弹跳的动画
-                    setPivotY(getHeight() / 2);
-                    setPivotX(getWidth() / 2);
-                    TranslateAnimation animation = new TranslateAnimation(-5, 10, -5, 10);
-                    animation.setInterpolator(new AccelerateDecelerateInterpolator());
-                    animation.setRepeatMode(Animation.REVERSE);
-                    animation.setRepeatCount(4);
-                    animation.setDuration(60);
-                    BezierView.this.startAnimation(animation);
+                    //计算直线方程
+                    float[] xyArr = computeTranslateAni(targetPoint, touchPoint);
+
+                    if (xyArr != null) {
+                        Log.i(TAG, xyArr[0] + " " + xyArr[1]);
+                        TranslateAnimation animation = new TranslateAnimation(-xyArr[0], -xyArr[1], xyArr[0], xyArr[1]);
+                        animation.setInterpolator(new AccelerateDecelerateInterpolator());
+                        animation.setRepeatMode(Animation.REVERSE);
+                        animation.setRepeatCount(4);
+                        animation.setDuration(60);
+                        BezierView.this.startAnimation(animation);
+                    }
                 }
                 invalidate();
             }
@@ -210,6 +213,33 @@ public class BezierView extends View {
             invalidate();
         }
         return true;
+    }
+
+    private static final float TranslateAniLimited = 5;
+
+    private float[] computeTranslateAni(PointF point1, PointF point2) {
+        if (point1.x == point2.x && point1.y == point2.y) {
+            return null;
+        }
+        float[] data = new float[2];
+        if (point1.x == point2.x) {
+            data[0] = 0;
+            data[1] = TranslateAniLimited;
+            return data;
+        }
+        if (point1.y == point2.y) {
+            data[0] = TranslateAniLimited;
+            data[1] = 0;
+            return data;
+        }
+
+        float k = (point2.y - point1.y) / (point2.x - point1.x);
+        float bEdge = (float) (TranslateAniLimited / (Math.sqrt(1 + k * k)));
+        float aEdge = bEdge * k;
+        data[0] = bEdge;
+        data[1] = aEdge;
+        Log.i("测试", "k=" + k + " x =" + bEdge + " y=" + aEdge);
+        return data;
     }
 
     public void computeControl() {
