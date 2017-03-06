@@ -197,7 +197,7 @@ public class BezierView extends View {
 
                     if (xyArr != null) {
                         Log.i(TAG, xyArr[0] + " " + xyArr[1]);
-                        TranslateAnimation animation = new TranslateAnimation(-xyArr[0], -xyArr[1], xyArr[0], xyArr[1]);
+                        TranslateAnimation animation = new TranslateAnimation(xyArr[0], -xyArr[0], xyArr[1], -xyArr[1]);
                         animation.setInterpolator(new AccelerateDecelerateInterpolator());
                         animation.setRepeatMode(Animation.REVERSE);
                         animation.setRepeatCount(4);
@@ -238,7 +238,8 @@ public class BezierView extends View {
         float aEdge = bEdge * k;
         data[0] = bEdge;
         data[1] = aEdge;
-        Log.i("测试", "k=" + k + " x =" + bEdge + " y=" + aEdge);
+
+        Log.i("测试", "k=" + k + " x =" +   data[0] + " y=" + data[1]);
         return data;
     }
 
