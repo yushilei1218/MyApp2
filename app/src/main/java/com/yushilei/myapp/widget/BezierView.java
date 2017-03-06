@@ -1,8 +1,5 @@
 package com.yushilei.myapp.widget;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -20,7 +16,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 
 import com.yushilei.myapp.R;
@@ -33,20 +28,20 @@ import com.yushilei.myapp.util.CircleUtil;
  * @desc
  */
 
-public class BezierView extends View {
+public class BezierView extends View implements Animation.AnimationListener {
     private static final String TAG = "BezierView";
 
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     /**
-     * 目标点坐标
+     * target坐标
      */
     private PointF targetPoint = new PointF();
     /**
-     * 触摸点坐标
+     * touch点坐标
      */
     private PointF touchPoint = new PointF();
     /**
-     * 目标点坐标 与 触摸点坐标 连线的中间点坐标 也就是control点
+     * target坐标 与 touch点坐标 连线的中间点坐标 也就是control点
      */
     private PointF controlPoint = new PointF();
 
@@ -74,6 +69,10 @@ public class BezierView extends View {
      */
     private boolean isDiscard = false;
     /**
+     * 是否处于直线动画执行状态
+     */
+    private boolean isAnimating = false;
+    /**
      * 可触发Drag的touch区域
      */
     private RectF mDragRange;
@@ -96,25 +95,30 @@ public class BezierView extends View {
      * 文本偏移量 （使得文本居中时需要）
      */
     private int mTextOffset;
-
+    /**
+     * 分离指数，这里以mR的为基础 ，needDrawClosePathDistance 大于  mR* mSplitRate 这2圆分离，也就是被拽开的状态
+     */
     private static final float mSplitRate = 2;
-
+    /**
+     * 最大完全拽开距离
+     * mSplitDistance = mSplitRate * mR;
+     */
     private double mSplitDistance;
 
     public BezierView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public BezierView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        //设置画笔
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
-
         float dimension = context.getResources().getDimension(R.dimen.textSize);
         textPaint.setTextSize(dimension);
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setColor(Color.WHITE);
-
+        //计算文本偏移
         Paint.FontMetricsInt fontMetricsInt = textPaint.getFontMetricsInt();
         mTextOffset = (Math.abs(fontMetricsInt.descent) - Math.abs(fontMetricsInt.ascent)) / 2;
 
@@ -123,26 +127,23 @@ public class BezierView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        //已视图中心点为target点
         targetPoint.x = getWidth() / 2;
         targetPoint.y = getHeight() / 2;
-
+        //圆半径
         mR = Math.min(getWidth(), getHeight()) / 10;
-
+        //可触发拖拽的区域
         mDragRange = new RectF(targetPoint.x - mR, targetPoint.y - mR, targetPoint.x + mR, targetPoint.y + mR);
-
+        //最大完全拽开距离
         mSplitDistance = mSplitRate * mR;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (isDiscard) {
-
-        } else {
+        if (!isDiscard) {
             if (!isSplit) {
-
                 canvas.drawCircle(targetPoint.x, targetPoint.y, mR, paint);
-
             }
             if (isDrag) {
                 canvas.drawCircle(touchPoint.x, touchPoint.y, mR, paint);
@@ -173,7 +174,12 @@ public class BezierView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (isAnimating) {//是否处于动画执行状态
+                    clearAnimation();//移除动画
+                }
+                //判断Down点是否在可拖拽范围内
                 if (mDragRange.contains((int) x, (int) y)) {
+                    //设置状态 并初始touch点
                     isDrag = true;
                     touchPoint.x = (int) x;
                     touchPoint.y = (int) y;
@@ -181,6 +187,7 @@ public class BezierView extends View {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
+                //在拖拽的情况下 对touch点 ，及4个交点
                 if (isDrag) {
                     touchPoint.x = (int) x;
                     touchPoint.y = (int) y;
@@ -188,20 +195,23 @@ public class BezierView extends View {
                 }
                 break;
             case MotionEvent.ACTION_UP: {
+                //释放时，判断已经处于完全被拽开的状态
                 isDiscard = needDrawClosePathDistance >= mSplitDistance;
+                //重置状态
                 isDrag = false;
                 isSplit = false;
-                if (!isDiscard) {//开启一个弹跳的动画
-                    //计算直线方程
-                    float[] xyArr = computeTranslateAni(targetPoint, touchPoint);
-
+                if (!isDiscard) {
+                    //如果尚未被完全拽开，那么松开时开启一个弹跳的动画
+                    //target点与touch点所在的直线方程 计算直线方程，计算直角三角形AB边
+                    float[] xyArr = computeRightTriangleAB(targetPoint, touchPoint);
                     if (xyArr != null) {
-                        Log.i(TAG, xyArr[0] + " " + xyArr[1]);
+                        //实现一个沿着 target点与touch点连线方向的直线动画效果
                         TranslateAnimation animation = new TranslateAnimation(xyArr[0], -xyArr[0], xyArr[1], -xyArr[1]);
                         animation.setInterpolator(new AccelerateDecelerateInterpolator());
                         animation.setRepeatMode(Animation.REVERSE);
                         animation.setRepeatCount(4);
                         animation.setDuration(60);
+                        animation.setAnimationListener(this);
                         BezierView.this.startAnimation(animation);
                     }
                 }
@@ -209,15 +219,26 @@ public class BezierView extends View {
             }
             break;
         }
+        //当处于Drag时 刷新视图即可
         if (isDrag) {
             invalidate();
         }
         return true;
     }
 
+    /**
+     * 直线动画以中心点向一个方向运动的距离
+     */
     private static final float TranslateAniLimited = 5;
 
-    private float[] computeTranslateAni(PointF point1, PointF point2) {
+    /**
+     * 计算2点的斜率， 以TranslateAniLimited 为 C边计算直角山角形 A B边
+     *
+     * @param point1
+     * @param point2
+     * @return 返回的就是直角山角形AB 边
+     */
+    private float[] computeRightTriangleAB(PointF point1, PointF point2) {
         if (point1.x == point2.x && point1.y == point2.y) {
             return null;
         }
@@ -239,10 +260,14 @@ public class BezierView extends View {
         data[0] = bEdge;
         data[1] = aEdge;
 
-        Log.i("测试", "k=" + k + " x =" +   data[0] + " y=" + data[1]);
+        Log.i("测试", "k=" + k + " x =" + data[0] + " y=" + data[1]);
         return data;
     }
 
+    /**
+     * 根据target 和touch点计算 control点
+     * 计算needDrawClosePathDistance
+     */
     public void computeControl() {
         controlPoint.x = (targetPoint.x + touchPoint.x) / 2;
         controlPoint.y = (targetPoint.y + touchPoint.y) / 2;
@@ -274,5 +299,20 @@ public class BezierView extends View {
             focusPointD.x = (int) doubles2[2];
             focusPointD.y = (int) doubles2[3];
         }
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+        isAnimating = true;
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        isAnimating = false;
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
     }
 }
