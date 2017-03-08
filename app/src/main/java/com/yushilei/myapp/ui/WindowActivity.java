@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.yushilei.myapp.BaseActivity;
 import com.yushilei.myapp.R;
@@ -70,9 +71,8 @@ public class WindowActivity extends BaseActivity implements View.OnTouchListener
         lp.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
         lp.x = 100;
         lp.y = 300;
-        floatView.setLayoutParams(lp);
+        //floatView.setLayoutParams(lp);
         wm.addView(floatView, lp);
-
         floatView.setOnTouchListener(this);
         floatView.setOnClickListener(this);
     }
@@ -96,7 +96,9 @@ public class WindowActivity extends BaseActivity implements View.OnTouchListener
 
     @Override
     public void onClick(View v) {
+        Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+
         animation.setDuration(500);
         animation.setRepeatCount(1);
         floatView.startAnimation(animation);

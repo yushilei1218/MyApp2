@@ -34,4 +34,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public abstract int getLayoutId();
+
+    public String getTAG() {
+        return this.getLocalClassName();
+    }
 }

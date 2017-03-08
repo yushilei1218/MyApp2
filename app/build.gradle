@@ -6,7 +6,7 @@ android {
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "com.yushilei.myapp"
-        minSdkVersion 13
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -33,4 +33,5 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'org.xutils:xutils:3.3.36'
 }

@@ -20,6 +20,7 @@ import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
 import com.yushilei.myapp.ui.WeiChatActivity;
 import com.yushilei.myapp.ui.WindowActivity;
+import com.yushilei.myapp.ui.XutilActivity;
 import com.yushilei.myapp.widget.DragView;
 
 import java.util.LinkedList;
@@ -105,6 +106,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Windows:
                     context.startActivity(new Intent(context, WindowActivity.class));
+                    break;
+                case Constant.Xutil:
+                    context.startActivity(new Intent(context, XutilActivity.class));
                     break;
             }
 
