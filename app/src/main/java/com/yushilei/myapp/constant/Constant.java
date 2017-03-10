@@ -17,4 +17,5 @@ public interface Constant {
     String RemoteViews = "RemoteViews";
     String Windows = "Windows";
     String Xutil = "Xutil";
+    String Coodinator = "Coodinator";
 }

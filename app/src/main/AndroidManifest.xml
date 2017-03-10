@@ -46,7 +46,11 @@
             android:name=".ui.WindowActivity"
             android:label="@string/title_activity_window"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.XutilActivity"></activity>
+        <activity android:name=".ui.XutilActivity" />
+        <activity
+            android:name=".ui.CoodinatorActivity"
+            android:label="@string/title_activity_coodinator"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
