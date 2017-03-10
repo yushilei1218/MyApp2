@@ -4,29 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
+        android:id="@+id/dependency"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:background="@drawable/item_shape">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
+            android:layout_centerInParent="true"
+            android:src="@mipmap/round_img" />
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/coodinator_recycler"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="LinearLayoutManager" />
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/item_shape"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior=".adapter.HideBehavior" />
 </android.support.design.widget.CoordinatorLayout>
 
 
