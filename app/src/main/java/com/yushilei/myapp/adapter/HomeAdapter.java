@@ -18,6 +18,7 @@ import com.yushilei.myapp.ui.ConstraintLayoutActivity;
 import com.yushilei.myapp.ui.CoodinatorActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
+import com.yushilei.myapp.ui.RxjavaActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
 import com.yushilei.myapp.ui.WeiChatActivity;
@@ -117,6 +118,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.AppBarLayout:
                     context.startActivity(new Intent(context, AppBarLayoutActivity.class));
+                    break;
+                case Constant.RxJava:
+                    context.startActivity(new Intent(context, RxjavaActivity.class));
                     break;
             }
 

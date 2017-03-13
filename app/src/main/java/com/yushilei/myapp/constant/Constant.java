@@ -19,4 +19,5 @@ public interface Constant {
     String Xutil = "Xutil";
     String Coodinator = "Coodinator";
     String AppBarLayout = "AppBarLayout";
+    String RxJava = "RxJava";
 }

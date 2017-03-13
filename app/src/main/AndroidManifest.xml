@@ -54,6 +54,7 @@
         <activity
             android:name=".ui.AppBarLayoutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ui.RxjavaActivity"></activity>
     </application>
 
 </manifest>
