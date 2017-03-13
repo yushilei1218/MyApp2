@@ -41,7 +41,13 @@ public class HideBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, RecyclerView child, View dependency) {
         Log.i(TAG, "onDependentViewChanged");
-        child.setY(dependency.getY() + dependency.getHeight());
+
+        float y = dependency.getHeight() - Math.abs(2 * dependency.getY());
+        //ViewCompat.setY(child, y);
+        //   child.setY(y);
+        float y1 = dependency.getY() + dependency.getHeight();
+        Log.i(TAG, "y=" + y + " y1=" + y1);
+        child.setY(y1);
         return true;
     }
 }

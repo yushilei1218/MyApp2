@@ -24,7 +24,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:background="@drawable/item_shape"
+        android:background="#ff92fa"
         app:layoutManager="LinearLayoutManager"
         app:layout_behavior=".adapter.HideBehavior" />
 </android.support.design.widget.CoordinatorLayout>
