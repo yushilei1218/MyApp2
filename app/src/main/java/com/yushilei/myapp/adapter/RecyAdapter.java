@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yushilei.myapp.R;
 
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
  * @desc
  */
 
-public class RecyAdapter extends RecyclerView.Adapter<RecyAdapter.VH> {
+public class RecyAdapter extends RecyclerView.Adapter<RecyAdapter.VH> implements View.OnClickListener {
     List<String> data = new LinkedList<>();
     Context context;
 
@@ -43,11 +44,19 @@ public class RecyAdapter extends RecyclerView.Adapter<RecyAdapter.VH> {
     @Override
     public void onBindViewHolder(VH holder, int position) {
         holder.tv.setText(data.get(position));
+        holder.itemView.setOnClickListener(this);
+        holder.itemView.setTag(R.attr.key_id, position);
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        Integer index = (Integer) v.getTag(R.attr.key_id);
+        Toast.makeText(context, "" + index, Toast.LENGTH_SHORT).show();
     }
 
     public static final class VH extends RecyclerView.ViewHolder {
