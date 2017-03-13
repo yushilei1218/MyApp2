@@ -30,6 +30,11 @@ public class FloatingBehavior extends CoordinatorLayout.Behavior<FloatingActionB
         int width = dependency.getWidth();
         child.setY(y + height - child.getMeasuredHeight() / 2);
         child.setX(width * 0.7f);
+        if (Math.abs(y)>0.6*height){
+            child.setVisibility(View.GONE);
+        }else {
+            child.setVisibility(View.VISIBLE);
+        }
 
         return true;
     }
