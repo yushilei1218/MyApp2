@@ -18,4 +18,5 @@ public interface Constant {
     String Windows = "Windows";
     String Xutil = "Xutil";
     String Coodinator = "Coodinator";
+    String AppBarLayout = "AppBarLayout";
 }

@@ -50,7 +50,10 @@
         <activity
             android:name=".ui.CoodinatorActivity"
             android:label="@string/title_activity_coodinator"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.AppBarLayoutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

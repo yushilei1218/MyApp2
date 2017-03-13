@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
+import com.yushilei.myapp.ui.AppBarLayoutActivity;
 import com.yushilei.myapp.ui.BezierActivity;
 import com.yushilei.myapp.ui.CCBActivity;
 import com.yushilei.myapp.ui.ConstraintLayoutActivity;
@@ -113,6 +114,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Coodinator:
                     context.startActivity(new Intent(context, CoodinatorActivity.class));
+                    break;
+                case Constant.AppBarLayout:
+                    context.startActivity(new Intent(context, AppBarLayoutActivity.class));
                     break;
             }
 

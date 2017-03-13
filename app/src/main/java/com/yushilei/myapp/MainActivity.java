@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Windows);
         data.add(Constant.Xutil);
         data.add(Constant.Coodinator);
+        data.add(Constant.AppBarLayout);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
