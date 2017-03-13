@@ -41,31 +41,7 @@ public class HideBehavior extends CoordinatorLayout.Behavior<RecyclerView> {
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, RecyclerView child, View dependency) {
         Log.i(TAG, "onDependentViewChanged");
-        int height = dependency.getHeight();
-        int bottom = (int) dependency.getY();
-        int i = height - bottom;
-        child.setY(height - 2 * i);
+        child.setY(dependency.getY() + dependency.getHeight());
         return true;
     }
-
-    @Override
-    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, RecyclerView child, View directTargetChild, View target, int nestedScrollAxes) {
-        Log.i(TAG, "onStartNestedScroll");
-
-        return ViewCompat.SCROLL_AXIS_VERTICAL == nestedScrollAxes;
-    }
-
-    @Override
-    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, RecyclerView child, View target, int dx, int dy, int[] consumed) {
-        Log.i(TAG, "onNestedPreScroll dy=" + dy + " consumed[1]" + consumed[1] + " " + target);
-        consumed[1] = dy;
-        dependency.setY(dependency.getY() - dy);
-    }
-
-    @Override
-    public void onNestedScroll(CoordinatorLayout coordinatorLayout, RecyclerView child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        Log.i(TAG, "onNestedScroll");
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
-    }
-
 }
