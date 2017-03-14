@@ -20,7 +20,7 @@ public class BaseApp extends Application {
 
         x.Ext.init(this);
         if (BuildConfig.DEBUG) {
-            x.Ext.setDebug(true); // 开启debug会影响性能
+            x.Ext.setDebug(false); // 开启debug会影响性能
         } else {
             x.Ext.setDebug(false);
         }
