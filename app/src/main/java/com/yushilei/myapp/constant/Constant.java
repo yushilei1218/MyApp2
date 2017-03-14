@@ -20,4 +20,5 @@ public interface Constant {
     String Coodinator = "Coodinator";
     String AppBarLayout = "AppBarLayout";
     String RxJava = "RxJava";
+    String CustomDrawable = "CustomDrawable";
 }

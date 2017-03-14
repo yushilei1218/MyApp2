@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Coodinator);
         data.add(Constant.AppBarLayout);
         data.add(Constant.RxJava);
+        data.add(Constant.CustomDrawable);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

@@ -16,6 +16,7 @@ import com.yushilei.myapp.ui.BezierActivity;
 import com.yushilei.myapp.ui.CCBActivity;
 import com.yushilei.myapp.ui.ConstraintLayoutActivity;
 import com.yushilei.myapp.ui.CoodinatorActivity;
+import com.yushilei.myapp.ui.CustomDrawableActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
 import com.yushilei.myapp.ui.RxjavaActivity;
@@ -121,6 +122,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.RxJava:
                     context.startActivity(new Intent(context, RxjavaActivity.class));
+                    break;
+                case Constant.CustomDrawable:
+                    context.startActivity(new Intent(context, CustomDrawableActivity.class));
                     break;
             }
 
