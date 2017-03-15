@@ -21,4 +21,5 @@ public interface Constant {
     String AppBarLayout = "AppBarLayout";
     String RxJava = "RxJava";
     String CustomDrawable = "CustomDrawable";
+    String Test = "Test";
 }

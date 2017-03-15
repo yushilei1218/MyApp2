@@ -56,7 +56,7 @@ public class RecyAdapter extends RecyclerView.Adapter<RecyAdapter.VH> implements
     @Override
     public void onClick(View v) {
         Integer index = (Integer) v.getTag(R.attr.key_id);
-        Toast.makeText(context, "" + index, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "top=" + v.getTop() + " y=" + v.getY() + " " + index, Toast.LENGTH_SHORT).show();
     }
 
     public static final class VH extends RecyclerView.ViewHolder {

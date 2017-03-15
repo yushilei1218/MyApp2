@@ -1,7 +1,9 @@
 package com.yushilei.myapp.widget;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.TextView;
 
 /**
@@ -11,6 +13,8 @@ import android.widget.TextView;
  */
 
 public class ItemView extends TextView {
+    private final String TAG = "ItemView";
+
     public ItemView(Context context) {
         super(context);
     }
@@ -27,5 +31,11 @@ public class ItemView extends TextView {
         }
         int hSpec = MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, hSpec);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Log.i(TAG, "ItemView onDraw");
+        super.onDraw(canvas);
     }
 }
