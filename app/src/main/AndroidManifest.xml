@@ -57,7 +57,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.RxjavaActivity" />
         <activity android:name=".ui.CustomDrawableActivity" />
-        <activity android:name=".ui.TestActivity"></activity>
+        <activity android:name=".ui.TestActivity" />
+        <activity android:name=".ui.CustomRecyclerLayoutActivity" />
+        <activity android:name=".ui.SocketActivity" />
+        <activity android:name=".ui.AnimationActivity"></activity>
     </application>
 
 </manifest>

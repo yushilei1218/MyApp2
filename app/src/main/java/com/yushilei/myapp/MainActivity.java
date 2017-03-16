@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.RxJava);
         data.add(Constant.CustomDrawable);
         data.add(Constant.Test);
+        data.add(Constant.CustomRecycler);
+        data.add(Constant.Socket);
+        data.add(Constant.Animation);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

@@ -11,15 +11,18 @@ import android.widget.TextView;
 
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
+import com.yushilei.myapp.ui.AnimationActivity;
 import com.yushilei.myapp.ui.AppBarLayoutActivity;
 import com.yushilei.myapp.ui.BezierActivity;
 import com.yushilei.myapp.ui.CCBActivity;
 import com.yushilei.myapp.ui.ConstraintLayoutActivity;
 import com.yushilei.myapp.ui.CoodinatorActivity;
 import com.yushilei.myapp.ui.CustomDrawableActivity;
+import com.yushilei.myapp.ui.CustomRecyclerLayoutActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
 import com.yushilei.myapp.ui.RxjavaActivity;
+import com.yushilei.myapp.ui.SocketActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.TestActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
@@ -129,6 +132,15 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Test:
                     context.startActivity(new Intent(context, TestActivity.class));
+                    break;
+                case Constant.CustomRecycler:
+                    context.startActivity(new Intent(context, CustomRecyclerLayoutActivity.class));
+                    break;
+                case Constant.Socket:
+                    context.startActivity(new Intent(context, SocketActivity.class));
+                    break;
+                case Constant.Animation:
+                    context.startActivity(new Intent(context, AnimationActivity.class));
                     break;
             }
 

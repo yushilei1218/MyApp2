@@ -10,6 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:layoutAnimation="@anim/layout_animation"
     tools:context="com.yushilei.myapp.ui.TestActivity">
 
     <android.support.v7.widget.RecyclerView
@@ -18,17 +19,10 @@
         android:layout_height="200dp"
         app:layoutManager="LinearLayoutManager" />
 
-    <com.yushilei.myapp.widget.LayoutView
+    <ListView
+        android:id="@+id/test_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/test_tv"
-            android:text="aa"
-            android:onClick="btnTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/item_shape" />
-    </com.yushilei.myapp.widget.LayoutView>
+        android:layout_height="match_parent"
+        android:layoutAnimation="@anim/layout_animation" />
 
 </LinearLayout>

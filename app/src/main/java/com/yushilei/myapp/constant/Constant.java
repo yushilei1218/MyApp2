@@ -22,4 +22,7 @@ public interface Constant {
     String RxJava = "RxJava";
     String CustomDrawable = "CustomDrawable";
     String Test = "Test";
+    String CustomRecycler = "CustomRecycler";
+    String Socket = "Socket";
+    String Animation = "Animation";
 }

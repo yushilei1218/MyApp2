@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--LayerDrawable-->
+    <item
+        android:left="0dp"
+        android:top="0dp">
+        <bitmap
+            android:antialias="true"
+            android:dither="true"
+            android:filter="true"
+            android:src="@mipmap/b" />
+    </item>
+    <item
+        android:left="20dp"
+        android:top="20dp">
+        <bitmap
+            android:antialias="true"
+            android:dither="true"
+            android:filter="true"
+            android:src="@mipmap/d" />
+    </item>
+    <item
+        android:left="40dp"
+        android:top="40dp">
+        <bitmap
+            android:antialias="true"
+            android:dither="true"
+            android:filter="true"
+            android:src="@mipmap/e" />
+    </item>
+
+</layer-list>

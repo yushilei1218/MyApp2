@@ -1,5 +1,7 @@
 package com.yushilei.myapp.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -18,11 +22,15 @@ import com.yushilei.myapp.BaseActivity;
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.adapter.RecyAdapter;
 
+import java.util.LinkedList;
+
 import butterknife.BindView;
 
 public class TestActivity extends BaseActivity {
     @BindView(R.id.test_recycler)
     RecyclerView recyclerView;
+    @BindView(R.id.test_lv)
+    ListView lv;
 
     @Override
     public int getLayoutId() {
@@ -31,6 +39,7 @@ public class TestActivity extends BaseActivity {
 
     @Override
     protected void onInitViews() {
+
         recyclerView.setAdapter(new RecyAdapter(this));
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -59,6 +68,19 @@ public class TestActivity extends BaseActivity {
                 outRect.set(0, 0, 0, 20);
             }
         });
+
+        LinkedList<String> data = new LinkedList<>();
+        for (int i = 0; i < 50; i++) {
+            data.add("item+" + i);
+        }
+        lv.setAdapter(new ArrayAdapter<String>(this, R.layout.item_recycler, R.id.item_tv, data));
+
+        AnimatorListenerAdapter animatorListenerAdapter = new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+            }
+        };
     }
 
     public void btnTest(View view) {
