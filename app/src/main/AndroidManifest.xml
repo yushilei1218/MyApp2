@@ -60,7 +60,11 @@
         <activity android:name=".ui.TestActivity" />
         <activity android:name=".ui.CustomRecyclerLayoutActivity" />
         <activity android:name=".ui.SocketActivity" />
-        <activity android:name=".ui.AnimationActivity"></activity>
+        <activity android:name=".ui.AnimationActivity" />
+
+        <meta-data
+            android:name="TINKER_ID"
+            android:value="tinker_id_6235657" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.yushilei.myapp.ui;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class AnimationActivity extends BaseActivity {
     boolean expand = true;
 
     public void animator(View view) {
+
         if (expand) {
             expand = false;
             ObjectAnimator animator = ObjectAnimator.ofInt(new Wrapper(et), "Width", et.getWidth(), et.getWidth() + 200);
