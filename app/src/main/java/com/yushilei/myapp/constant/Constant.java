@@ -25,4 +25,5 @@ public interface Constant {
     String CustomRecycler = "CustomRecycler";
     String Socket = "Socket";
     String Animation = "Animation";
+    String MVP = "MVP";
 }

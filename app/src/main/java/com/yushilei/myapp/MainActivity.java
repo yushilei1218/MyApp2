@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.CustomRecycler);
         data.add(Constant.Socket);
         data.add(Constant.Animation);
+        data.add(Constant.MVP);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
