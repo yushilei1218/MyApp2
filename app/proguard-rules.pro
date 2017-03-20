@@ -41,3 +41,12 @@
 #Rx
 -dontwarn rx.**
 -keep class rx.** { *;}
+
+#-keepnames class com.yushilei.myapp.ui.AnimationActivity$*{
+#      <fields>;
+#      <methods>;
+#}
+-keep class com.yushilei.myapp.ui.*$*{
+<methods>;
+<fields>;
+}

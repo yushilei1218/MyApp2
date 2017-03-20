@@ -1,5 +1,7 @@
 package com.yushilei.myapp.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -122,7 +124,7 @@ public class RefreshView extends FrameLayout {
 
                 if (isOverEdge) {//加载
                     ani = ObjectAnimator.ofFloat(child, "Y", child.getY(), 0f);
-                    ani.setDuration((long) (child.getY() * 5));
+                    ani.setDuration(300);
                     ani.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animation) {
@@ -134,6 +136,14 @@ public class RefreshView extends FrameLayout {
                             } else {
                                 header.setY(y1);
                             }
+                        }
+                    });
+                    ani.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            ObjectAnimator animator = ObjectAnimator.ofFloat(header, "Y", 0, -header.getHeight());
+                            animator.setDuration(200);
+                            animator.start();
                         }
                     });
                     ani.start();
