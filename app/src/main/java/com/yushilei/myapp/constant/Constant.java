@@ -8,6 +8,7 @@ package com.yushilei.myapp.constant;
 
 public interface Constant {
     String com_yushilei_myapp_action = "com.yushilei.myapp.action";
+    String com_yushilei_myapp_socket = "com.yushilei.myapp.socket";
     String key = "com.yushilei.myapp.key";
     String keyObj = "com.yushilei.myapp.keyObj";
 
