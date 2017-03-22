@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Socket);
         data.add(Constant.Animation);
         data.add(Constant.MVP);
+        data.add(Constant.Handler);
+        data.add(Constant.Process);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

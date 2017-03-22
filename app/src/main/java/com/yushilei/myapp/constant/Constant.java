@@ -7,6 +7,10 @@ package com.yushilei.myapp.constant;
  */
 
 public interface Constant {
+    String com_yushilei_myapp_action = "com.yushilei.myapp.action";
+    String key = "com.yushilei.myapp.key";
+    String keyObj = "com.yushilei.myapp.keyObj";
+
     String DRAG = "拖拽";
     String VIEW_PAGER = "ViewPager";
     String CCB = "CCB";
@@ -26,4 +30,6 @@ public interface Constant {
     String Socket = "Socket";
     String Animation = "Animation";
     String MVP = "MVP";
+    String Handler = "Handler";
+    String Process = "Process";
 }

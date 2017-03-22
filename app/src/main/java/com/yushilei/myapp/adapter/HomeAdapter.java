@@ -20,7 +20,9 @@ import com.yushilei.myapp.ui.CoodinatorActivity;
 import com.yushilei.myapp.ui.CustomDrawableActivity;
 import com.yushilei.myapp.ui.CustomRecyclerLayoutActivity;
 import com.yushilei.myapp.ui.DragActivity;
+import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.MVPActivity;
+import com.yushilei.myapp.ui.ProcessIPCActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
 import com.yushilei.myapp.ui.RxjavaActivity;
 import com.yushilei.myapp.ui.SocketActivity;
@@ -145,6 +147,12 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.MVP:
                     context.startActivity(new Intent(context, MVPActivity.class));
+                    break;
+                case Constant.Handler:
+                    context.startActivity(new Intent(context, HandlerActivity.class));
+                    break;
+                case Constant.Process:
+                    context.startActivity(new Intent(context, ProcessIPCActivity.class));
                     break;
             }
 

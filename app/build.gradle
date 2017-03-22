@@ -370,7 +370,7 @@ android {
          * so we can get the newly git version easily!
          */
         buildConfigField "String", "TINKER_ID", "\"${getTinkerIdValue()}\""
-        buildConfigField "String", "PLATFORM",  "\"all\""
+        buildConfigField "String", "PLATFORM", "\"all\""
     }
 
     buildTypes {
@@ -401,12 +401,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //optional, help to generate the final application
+    //tinker's main Android lib
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'org.xutils:xutils:3.3.36'
@@ -415,10 +415,10 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.android.support:gridlayout-v7:23.4.0'
-    //optional, help to generate the final application
-    provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
-    //tinker's main Android lib
     compile 'com.tencent.tinker:tinker-android-lib:1.7.7'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
 }

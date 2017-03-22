@@ -62,7 +62,22 @@
         <activity android:name=".ui.CustomRecyclerLayoutActivity" />
         <activity android:name=".ui.SocketActivity" />
         <activity android:name=".ui.AnimationActivity" />
-        <activity android:name=".ui.MVPActivity"></activity>
+        <activity android:name=".ui.MVPActivity" />
+        <activity android:name=".ui.HandlerActivity" />
+        <!-- 私有进程 -->
+        <activity
+            android:name=".ui.ProcessIPCActivity"
+            android:process=":remote" />
+
+        <service
+            android:name=".services.MessengerService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.yushilei.myapp.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

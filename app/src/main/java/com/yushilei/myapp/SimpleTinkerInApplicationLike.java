@@ -1,8 +1,11 @@
 package com.yushilei.myapp;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Process;
+import android.util.Log;
 
 import com.tencent.tinker.anno.DefaultLifeCycle;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
@@ -33,6 +36,8 @@ public class SimpleTinkerInApplicationLike extends ApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.i("TinkerApp", getProcessName(getApplication(), Process.myPid()));
+
         TinkerInstaller.install(this);
 
         x.Ext.init(this.getApplication());
@@ -43,5 +48,17 @@ public class SimpleTinkerInApplicationLike extends ApplicationLike {
         }
 
         DbUtil.instance();
+    }
+
+    private String getProcessName(Context context, int pid) {
+
+        String processName = "";
+        ActivityManager manager = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningAppProcessInfo process : manager.getRunningAppProcesses()) {
+            if (process.pid == pid) {
+                processName = process.processName;
+            }
+        }
+        return processName;
     }
 }
