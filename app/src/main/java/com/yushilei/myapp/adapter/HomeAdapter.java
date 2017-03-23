@@ -29,6 +29,7 @@ import com.yushilei.myapp.ui.SocketActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.TestActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
+import com.yushilei.myapp.ui.ViewStubActivity;
 import com.yushilei.myapp.ui.WeiChatActivity;
 import com.yushilei.myapp.ui.WindowActivity;
 import com.yushilei.myapp.ui.XutilActivity;
@@ -153,6 +154,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Process:
                     context.startActivity(new Intent(context, ProcessIPCActivity.class));
+                    break;
+                case Constant.ViewStub:
+                    context.startActivity(new Intent(context, ViewStubActivity.class));
                     break;
             }
 

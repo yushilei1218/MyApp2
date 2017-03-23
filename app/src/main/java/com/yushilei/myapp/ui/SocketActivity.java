@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.yushilei.myapp.BaseActivity;
 import com.yushilei.myapp.R;
@@ -66,6 +67,8 @@ public class SocketActivity extends BaseActivity implements ServiceConnection {
     @Override
     protected void onInitViews() {
         Intent service = new Intent();
+        Toast.makeText(this, "启动远程的ServerSocket", Toast.LENGTH_SHORT).show();
+
         service.setAction(Constant.com_yushilei_myapp_socket);
         service.addCategory("android.intent.category.DEFAULT");
 
@@ -103,7 +106,7 @@ public class SocketActivity extends BaseActivity implements ServiceConnection {
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-
+        Toast.makeText(this, "onServiceConnected ServerSocket", Toast.LENGTH_SHORT).show();
     }
 
     @Override

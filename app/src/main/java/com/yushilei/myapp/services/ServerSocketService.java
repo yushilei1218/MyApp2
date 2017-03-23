@@ -11,8 +11,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class ServerSocketService extends Service {
     public ServerSocketService() {
@@ -42,6 +46,8 @@ public class ServerSocketService extends Service {
             ServerSocket serverSocket = null;
             try {
                 serverSocket = new ServerSocket(8688);
+                String hostAddress = getIp();
+                Log.i(TAG, "hostAddress:" + hostAddress + " port:" + 8688);
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.i(TAG, "establish tcp server failed ,port 8688");
@@ -95,4 +101,20 @@ public class ServerSocketService extends Service {
         }
     }
 
+    private String getIp() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e("WifiPreference", ex.toString());
+        }
+        return null;
+    }
 }

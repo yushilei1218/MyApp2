@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.MVP);
         data.add(Constant.Handler);
         data.add(Constant.Process);
+        data.add(Constant.ViewStub);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

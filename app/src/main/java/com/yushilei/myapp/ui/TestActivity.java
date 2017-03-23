@@ -6,12 +6,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.util.Pair;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,6 +28,10 @@ import com.yushilei.myapp.R;
 import com.yushilei.myapp.adapter.RecyAdapter;
 
 import java.util.LinkedList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import butterknife.BindView;
 
@@ -81,6 +90,10 @@ public class TestActivity extends BaseActivity {
                 super.onAnimationEnd(animation);
             }
         };
+        Pair<String, String> o = new Pair<>("a", "b");
+        SparseArray<String> array = new SparseArray<>();
+        array.append(1, "ac");
+
     }
 
     public void btnTest(View view) {

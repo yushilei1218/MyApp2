@@ -33,4 +33,5 @@ public interface Constant {
     String MVP = "MVP";
     String Handler = "Handler";
     String Process = "Process";
+    String ViewStub = "ViewStub";
 }

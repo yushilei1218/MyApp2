@@ -60,8 +60,6 @@
         <activity android:name=".ui.CustomDrawableActivity" />
         <activity android:name=".ui.TestActivity" />
         <activity android:name=".ui.CustomRecyclerLayoutActivity" />
-
-
         <activity android:name=".ui.AnimationActivity" />
         <activity android:name=".ui.MVPActivity" />
         <activity android:name=".ui.HandlerActivity" />
@@ -93,6 +91,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
+        <service
+            android:name=".services.MyIntentService"
+            android:exported="false" />
+
+        <activity android:name=".ui.ViewStubActivity"></activity>
     </application>
 
 </manifest>
