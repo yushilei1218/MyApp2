@@ -34,4 +34,5 @@ public interface Constant {
     String Handler = "Handler";
     String Process = "Process";
     String ViewStub = "ViewStub";
+    String RetrofitRxJava = "RetrofitRxJava";
 }

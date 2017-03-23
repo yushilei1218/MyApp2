@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Handler);
         data.add(Constant.Process);
         data.add(Constant.ViewStub);
+        data.add(Constant.RetrofitRxJava);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

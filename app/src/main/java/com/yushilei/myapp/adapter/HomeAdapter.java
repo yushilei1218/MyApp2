@@ -24,6 +24,7 @@ import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.MVPActivity;
 import com.yushilei.myapp.ui.ProcessIPCActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
+import com.yushilei.myapp.ui.RetrofitRxJavaActivity;
 import com.yushilei.myapp.ui.RxjavaActivity;
 import com.yushilei.myapp.ui.SocketActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
@@ -157,6 +158,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.ViewStub:
                     context.startActivity(new Intent(context, ViewStubActivity.class));
+                    break;
+                case Constant.RetrofitRxJava:
+                    context.startActivity(new Intent(context, RetrofitRxJavaActivity.class));
                     break;
             }
 

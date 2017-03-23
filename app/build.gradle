@@ -411,8 +411,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'org.xutils:xutils:3.3.36'
     compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'io.reactivex:rxjava:1.2.7'
-    compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.android.support:gridlayout-v7:23.4.0'
     compile 'com.tencent.tinker:tinker-android-lib:1.7.7'
@@ -421,4 +419,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
+    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
 }

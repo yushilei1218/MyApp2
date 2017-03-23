@@ -95,7 +95,8 @@
             android:name=".services.MyIntentService"
             android:exported="false" />
 
-        <activity android:name=".ui.ViewStubActivity"></activity>
+        <activity android:name=".ui.ViewStubActivity" />
+        <activity android:name=".ui.RetrofitRxJavaActivity"></activity>
     </application>
 
 </manifest>
