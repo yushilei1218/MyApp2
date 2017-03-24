@@ -1,6 +1,95 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'com.tencent.tinker.patch'
+android {
+    signingConfigs {
+        config {
+            keyAlias 'my_key'
+            keyPassword '123456'
+            storeFile file('F:/Code_Local/MyApp/app/keyStore/key.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.yushilei.myapp"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        /**
+         * buildConfig can change during patch!
+         * we can use the newly value when patch
+         */
+        buildConfigField "String", "MESSAGE", "\"I am the base apk\""
+//        buildConfigField "String", "MESSAGE", "\"I am the patch apk\""
+        /**
+         * client version would update with patch
+         * so we can get the newly git version easily!
+         */
+        buildConfigField "String", "TINKER_ID", "\"${getTinkerIdValue()}\""
+        buildConfigField "String", "PLATFORM", "\"all\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            signingConfig signingConfigs.config
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            signingConfig signingConfigs.config
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //optional, help to generate the final application
+
+    //tinker's main Android lib
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
+    compile 'org.xutils:xutils:3.3.36'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.android.support:gridlayout-v7:23.4.0'
+    compile 'com.tencent.tinker:tinker-android-lib:1.7.7'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
+
+    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+}
 //Tinker
 def gitSha() {
     try {
@@ -339,87 +428,4 @@ if (buildWithTinker()) {
 
 
 
-android {
-    signingConfigs {
-        config {
-            keyAlias 'my_key'
-            keyPassword '123456'
-            storeFile file('F:/Code_Local/MyApp/app/keyStore/key.jks')
-            storePassword '123456'
-        }
-    }
-    compileSdkVersion 23
-    buildToolsVersion "24.0.3"
-    defaultConfig {
-        applicationId "com.yushilei.myapp"
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        multiDexEnabled true
-        /**
-         * buildConfig can change during patch!
-         * we can use the newly value when patch
-         */
-        buildConfigField "String", "MESSAGE", "\"I am the base apk\""
-//        buildConfigField "String", "MESSAGE", "\"I am the patch apk\""
-        /**
-         * client version would update with patch
-         * so we can get the newly git version easily!
-         */
-        buildConfigField "String", "TINKER_ID", "\"${getTinkerIdValue()}\""
-        buildConfigField "String", "PLATFORM", "\"all\""
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            signingConfig signingConfigs.config
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled true
-            signingConfig signingConfigs.config
-        }
-    }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
-
-}
-
-
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    //optional, help to generate the final application
-    //tinker's main Android lib
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'in.srain.cube:ultra-ptr:1.0.11'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
-    compile 'org.xutils:xutils:3.3.36'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.android.support:gridlayout-v7:23.4.0'
-    compile 'com.tencent.tinker:tinker-android-lib:1.7.7'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    provided 'com.tencent.tinker:tinker-android-anno:1.7.7'
-    compile 'io.reactivex:rxjava:1.2.7'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
-}

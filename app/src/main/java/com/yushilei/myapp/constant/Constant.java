@@ -35,4 +35,6 @@ public interface Constant {
     String Process = "Process";
     String ViewStub = "ViewStub";
     String RetrofitRxJava = "RetrofitRxJava";
+    String Glide = "Glide";
+    String Https = "Https";
 }

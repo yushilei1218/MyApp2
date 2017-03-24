@@ -96,7 +96,9 @@
             android:exported="false" />
 
         <activity android:name=".ui.ViewStubActivity" />
-        <activity android:name=".ui.RetrofitRxJavaActivity"></activity>
+        <activity android:name=".ui.RetrofitRxJavaActivity" />
+        <activity android:name=".ui.GlideActivity" />
+        <activity android:name=".ui.HttpsActivity"></activity>
     </application>
 
 </manifest>

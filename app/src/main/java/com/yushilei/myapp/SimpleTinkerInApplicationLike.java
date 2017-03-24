@@ -28,6 +28,8 @@ public class SimpleTinkerInApplicationLike extends ApplicationLike {
         super(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent);
     }
 
+    public static Application application;
+
     @Override
     public void onBaseContextAttached(Context base) {
         super.onBaseContextAttached(base);
@@ -36,6 +38,7 @@ public class SimpleTinkerInApplicationLike extends ApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
+        application = getApplication();
         Log.i("TinkerApp", getProcessName(getApplication(), Process.myPid()));
 
         TinkerInstaller.install(this);

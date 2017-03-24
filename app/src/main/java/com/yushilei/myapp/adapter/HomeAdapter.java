@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.yushilei.myapp.R;
 import com.yushilei.myapp.constant.Constant;
 import com.yushilei.myapp.ui.AnimationActivity;
@@ -20,7 +21,9 @@ import com.yushilei.myapp.ui.CoodinatorActivity;
 import com.yushilei.myapp.ui.CustomDrawableActivity;
 import com.yushilei.myapp.ui.CustomRecyclerLayoutActivity;
 import com.yushilei.myapp.ui.DragActivity;
+import com.yushilei.myapp.ui.GlideActivity;
 import com.yushilei.myapp.ui.HandlerActivity;
+import com.yushilei.myapp.ui.HttpsActivity;
 import com.yushilei.myapp.ui.MVPActivity;
 import com.yushilei.myapp.ui.ProcessIPCActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
@@ -161,6 +164,12 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.RetrofitRxJava:
                     context.startActivity(new Intent(context, RetrofitRxJavaActivity.class));
+                    break;
+                case Constant.Glide:
+                    context.startActivity(new Intent(context, GlideActivity.class));
+                    break;
+                case Constant.Https:
+                    context.startActivity(new Intent(context, HttpsActivity.class));
                     break;
             }
 
