@@ -99,7 +99,9 @@
         <activity android:name=".ui.RetrofitRxJavaActivity" />
         <activity android:name=".ui.GlideActivity" />
         <activity android:name=".ui.HttpsActivity" />
-        <activity android:name=".ui.WebViewActivity"></activity>
+        <activity android:name=".ui.WebViewActivity" />
+        <activity android:name=".ui.PhotoViewActivity" />
+        <activity android:name=".ui.MatrixActivity"></activity>
     </application>
 
 </manifest>

@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Glide);
         data.add(Constant.Https);
         data.add(Constant.WebView);
+        data.add(Constant.PhotoView);
+        data.add(Constant.Matrix);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

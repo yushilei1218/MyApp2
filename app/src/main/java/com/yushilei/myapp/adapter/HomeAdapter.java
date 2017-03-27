@@ -25,6 +25,8 @@ import com.yushilei.myapp.ui.GlideActivity;
 import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.HttpsActivity;
 import com.yushilei.myapp.ui.MVPActivity;
+import com.yushilei.myapp.ui.MatrixActivity;
+import com.yushilei.myapp.ui.PhotoViewActivity;
 import com.yushilei.myapp.ui.ProcessIPCActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
 import com.yushilei.myapp.ui.RetrofitRxJavaActivity;
@@ -174,6 +176,12 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.WebView:
                     context.startActivity(new Intent(context, WebViewActivity.class));
+                    break;
+                case Constant.PhotoView:
+                    context.startActivity(new Intent(context, PhotoViewActivity.class));
+                    break;
+                case Constant.Matrix:
+                    context.startActivity(new Intent(context, MatrixActivity.class));
                     break;
             }
 

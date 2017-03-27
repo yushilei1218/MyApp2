@@ -38,4 +38,6 @@ public interface Constant {
     String Glide = "Glide";
     String Https = "Https";
     String WebView = "WebView";
+    String PhotoView = "PhotoView";
+    String Matrix = "Matrix";
 }
