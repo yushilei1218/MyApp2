@@ -37,7 +37,7 @@ import retrofit2.http.GET;
  * @desc
  */
 
-public class NetApi12306 {
+public class NetApiHttps {
     private static final String Url = "https://kyfw.12306.cn";
 
     public static Net12306Service service;

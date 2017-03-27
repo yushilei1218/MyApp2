@@ -1,14 +1,13 @@
 package com.yushilei.myapp.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yushilei.myapp.BaseActivity;
 import com.yushilei.myapp.R;
-import com.yushilei.myapp.api.NetApi12306;
+import com.yushilei.myapp.api.NetApiHttps;
+import com.yushilei.myapp.api.NetApiHttpsBaidu;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -25,7 +24,7 @@ public class HttpsActivity extends BaseActivity implements Callback<String> {
     }
 
     public void https(View view) {
-        NetApi12306.service.getContent().enqueue(this);
+        NetApiHttps.service.getContent().enqueue(this);
     }
 
     @Override
@@ -38,5 +37,21 @@ public class HttpsActivity extends BaseActivity implements Callback<String> {
     public void onFailure(Call<String> call, Throwable t) {
         Toast.makeText(this, "异常", Toast.LENGTH_SHORT).show();
         t.printStackTrace();
+    }
+
+    public void https2(View view) {
+        NetApiHttpsBaidu.service.getContent().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(HttpsActivity.this, "onResponse", Toast.LENGTH_SHORT).show();
+                tv.setText(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(HttpsActivity.this, "异常", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
     }
 }

@@ -22,6 +22,12 @@
             android:onClick="https"
             android:text="Https 12306" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="https2"
+            android:text="Https Baidu" />
+
         <TextView
             android:id="@+id/https_tv"
             android:layout_width="match_parent"
