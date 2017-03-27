@@ -34,6 +34,7 @@ import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.TestActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
 import com.yushilei.myapp.ui.ViewStubActivity;
+import com.yushilei.myapp.ui.WebViewActivity;
 import com.yushilei.myapp.ui.WeiChatActivity;
 import com.yushilei.myapp.ui.WindowActivity;
 import com.yushilei.myapp.ui.XutilActivity;
@@ -170,6 +171,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Https:
                     context.startActivity(new Intent(context, HttpsActivity.class));
+                    break;
+                case Constant.WebView:
+                    context.startActivity(new Intent(context, WebViewActivity.class));
                     break;
             }
 

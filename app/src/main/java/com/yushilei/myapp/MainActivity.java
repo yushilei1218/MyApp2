@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.RetrofitRxJava);
         data.add(Constant.Glide);
         data.add(Constant.Https);
+        data.add(Constant.WebView);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

@@ -98,7 +98,8 @@
         <activity android:name=".ui.ViewStubActivity" />
         <activity android:name=".ui.RetrofitRxJavaActivity" />
         <activity android:name=".ui.GlideActivity" />
-        <activity android:name=".ui.HttpsActivity"></activity>
+        <activity android:name=".ui.HttpsActivity" />
+        <activity android:name=".ui.WebViewActivity"></activity>
     </application>
 
 </manifest>

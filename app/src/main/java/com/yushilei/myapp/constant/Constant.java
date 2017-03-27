@@ -37,4 +37,5 @@ public interface Constant {
     String RetrofitRxJava = "RetrofitRxJava";
     String Glide = "Glide";
     String Https = "Https";
+    String WebView = "WebView";
 }
