@@ -40,4 +40,5 @@ public interface Constant {
     String WebView = "WebView";
     String PhotoView = "PhotoView";
     String Matrix = "Matrix";
+    String Filter = "Filter";
 }

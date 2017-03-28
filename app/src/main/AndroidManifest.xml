@@ -101,7 +101,8 @@
         <activity android:name=".ui.HttpsActivity" />
         <activity android:name=".ui.WebViewActivity" />
         <activity android:name=".ui.PhotoViewActivity" />
-        <activity android:name=".ui.MatrixActivity"></activity>
+        <activity android:name=".ui.MatrixActivity" />
+        <activity android:name=".ui.FilterActivity"></activity>
     </application>
 
 </manifest>

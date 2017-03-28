@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.WebView);
         data.add(Constant.PhotoView);
         data.add(Constant.Matrix);
+        data.add(Constant.Filter);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

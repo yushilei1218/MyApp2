@@ -21,6 +21,7 @@ import com.yushilei.myapp.ui.CoodinatorActivity;
 import com.yushilei.myapp.ui.CustomDrawableActivity;
 import com.yushilei.myapp.ui.CustomRecyclerLayoutActivity;
 import com.yushilei.myapp.ui.DragActivity;
+import com.yushilei.myapp.ui.FilterActivity;
 import com.yushilei.myapp.ui.GlideActivity;
 import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.HttpsActivity;
@@ -182,6 +183,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Matrix:
                     context.startActivity(new Intent(context, MatrixActivity.class));
+                    break;
+                case Constant.Filter:
+                    context.startActivity(new Intent(context, FilterActivity.class));
                     break;
             }
 
