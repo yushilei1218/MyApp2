@@ -28,6 +28,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content">
 
         <TextView
@@ -36,6 +37,10 @@
 
         <TextView
             android:id="@+id/filter2"
+            style="@style/Style_filter_tv" />
+
+        <TextView
+            android:id="@+id/filter3"
             style="@style/Style_filter_tv" />
     </LinearLayout>
 
