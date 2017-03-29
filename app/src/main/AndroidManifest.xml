@@ -102,7 +102,8 @@
         <activity android:name=".ui.WebViewActivity" />
         <activity android:name=".ui.PhotoViewActivity" />
         <activity android:name=".ui.MatrixActivity" />
-        <activity android:name=".ui.FilterActivity"></activity>
+        <activity android:name=".ui.FilterActivity" />
+        <activity android:name=".ui.ThreeLevelFilterActivity"></activity>
     </application>
 
 </manifest>

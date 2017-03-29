@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.PhotoView);
         data.add(Constant.Matrix);
         data.add(Constant.Filter);
+        data.add(Constant.ThreeLevelFilter);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

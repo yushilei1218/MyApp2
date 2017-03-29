@@ -35,6 +35,7 @@ import com.yushilei.myapp.ui.RxjavaActivity;
 import com.yushilei.myapp.ui.SocketActivity;
 import com.yushilei.myapp.ui.TabLayoutActivity;
 import com.yushilei.myapp.ui.TestActivity;
+import com.yushilei.myapp.ui.ThreeLevelFilterActivity;
 import com.yushilei.myapp.ui.ViewPagerActivity;
 import com.yushilei.myapp.ui.ViewStubActivity;
 import com.yushilei.myapp.ui.WebViewActivity;
@@ -186,6 +187,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Filter:
                     context.startActivity(new Intent(context, FilterActivity.class));
+                    break;
+                case Constant.ThreeLevelFilter:
+                    context.startActivity(new Intent(context, ThreeLevelFilterActivity.class));
                     break;
             }
 

@@ -41,4 +41,5 @@ public interface Constant {
     String PhotoView = "PhotoView";
     String Matrix = "Matrix";
     String Filter = "Filter";
+    String ThreeLevelFilter = "ThreeLevelFilter";
 }
