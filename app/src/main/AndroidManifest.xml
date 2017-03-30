@@ -105,7 +105,8 @@
         <activity android:name=".ui.FilterActivity" />
         <activity android:name=".ui.ThreeLevelFilterActivity" />
         <activity android:name=".ui.BezierSignActivity" />
-        <activity android:name=".ui.PageTurnActivity"></activity>
+        <activity android:name=".ui.PageTurnActivity" />
+        <activity android:name=".ui.ClipRegionActivity"></activity>
     </application>
 
 </manifest>

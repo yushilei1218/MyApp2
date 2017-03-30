@@ -44,4 +44,5 @@ public interface Constant {
     String Filter = "Filter";
     String ThreeLevelFilter = "ThreeLevelFilter";
     String PageTurn = "PageTurn";
+    String ClipRegion = "ClipRegion";
 }

@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.Region;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
@@ -29,18 +30,52 @@ public class PageTurningView extends TextView {
     private PointF dragPointF = new PointF();
 
     private Path mPath = new Path();
+    private Path firstPath = new Path();
+    private Path secPath = new Path();
 
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public PageTurningView(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint.setColor(Color.BLUE);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint2.setStyle(Paint.Style.STROKE);
+        paint2.setColor(Color.RED);
+        paint2.setStrokeWidth(2f);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.drawColor(Color.WHITE);
+        paint2.setColor(Color.LTGRAY);
+        for (int i = 0; i < 20; i++) {
+            canvas.drawLine(0, getHeight() * i / 20f, getWidth(), getHeight() * i / 20f, paint2);
+            canvas.drawLine(getWidth() * i / 15, 0, getWidth() * i / 15, getHeight(), paint2);
+
+        }
+
+        firstPath.moveTo(0, 0);
+        firstPath.lineTo(getWidth(), getHeight() / 4);
+        firstPath.lineTo(0, getHeight() / 2);
+        firstPath.close();
+        secPath.moveTo(100, 100);
+        secPath.lineTo(getWidth(), getHeight() / 4);
+        secPath.lineTo(0, getHeight() / 2);
+        secPath.close();
+        paint2.setColor(Color.RED);
+        canvas.drawPath(firstPath, paint2);
+        paint2.setColor(Color.RED);
+        canvas.drawPath(secPath, paint2);
+
+        canvas.save();
+        canvas.clipPath(firstPath);
+        canvas.clipPath(secPath, Region.Op.REVERSE_DIFFERENCE);
+        canvas.drawColor(Color.BLACK);
+
+        canvas.restore();
+
         if (isDrag) {
             canvas.drawPath(mPath, paint);
         }

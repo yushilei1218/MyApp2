@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.Filter);
         data.add(Constant.ThreeLevelFilter);
         data.add(Constant.PageTurn);
+        data.add(Constant.ClipRegion);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
