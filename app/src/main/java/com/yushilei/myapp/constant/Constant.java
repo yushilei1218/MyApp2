@@ -17,6 +17,7 @@ public interface Constant {
     String CCB = "CCB";
     String PAGER = "PAGER";
     String Bezier = "Bezier";
+    String BezierSign = "BezierSign";
     String Refresh = "Refresh";
     String Constraint = "Transparent";
     String RemoteViews = "RemoteViews";

@@ -15,6 +15,7 @@ import com.yushilei.myapp.constant.Constant;
 import com.yushilei.myapp.ui.AnimationActivity;
 import com.yushilei.myapp.ui.AppBarLayoutActivity;
 import com.yushilei.myapp.ui.BezierActivity;
+import com.yushilei.myapp.ui.BezierSignActivity;
 import com.yushilei.myapp.ui.CCBActivity;
 import com.yushilei.myapp.ui.ConstraintLayoutActivity;
 import com.yushilei.myapp.ui.CoodinatorActivity;
@@ -190,6 +191,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.ThreeLevelFilter:
                     context.startActivity(new Intent(context, ThreeLevelFilterActivity.class));
+                    break;
+                case Constant.BezierSign:
+                    context.startActivity(new Intent(context, BezierSignActivity.class));
                     break;
             }
 

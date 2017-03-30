@@ -103,7 +103,8 @@
         <activity android:name=".ui.PhotoViewActivity" />
         <activity android:name=".ui.MatrixActivity" />
         <activity android:name=".ui.FilterActivity" />
-        <activity android:name=".ui.ThreeLevelFilterActivity"></activity>
+        <activity android:name=".ui.ThreeLevelFilterActivity" />
+        <activity android:name=".ui.BezierSignActivity"></activity>
     </application>
 
 </manifest>

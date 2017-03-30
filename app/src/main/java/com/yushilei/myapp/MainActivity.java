@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.CCB);
         data.add(Constant.PAGER);
         data.add(Constant.Bezier);
+        data.add(Constant.BezierSign);
         data.add(Constant.Refresh);
         data.add(Constant.Constraint);
         data.add(Constant.RemoteViews);

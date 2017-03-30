@@ -19,8 +19,34 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:onClick="animator"
         android:layout_height="wrap_content"
+        android:onClick="animator"
         android:text="animator" />
 
+    <LinearLayout
+        android:id="@+id/animation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:animateLayoutChanges="true"
+        android:background="#d6d6d6"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/animation_layout_transition"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="keyFrame"
+        android:onClick="keyFrame"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/animation_img"
+        android:layout_width="wrap_content"
+        android:src="@mipmap/telephone"
+        android:onClick="propertyValueHolder"
+        android:layout_height="wrap_content" />
 </LinearLayout>
