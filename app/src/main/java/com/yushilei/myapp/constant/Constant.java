@@ -43,4 +43,5 @@ public interface Constant {
     String Matrix = "Matrix";
     String Filter = "Filter";
     String ThreeLevelFilter = "ThreeLevelFilter";
+    String PageTurn = "PageTurn";
 }

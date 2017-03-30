@@ -28,6 +28,7 @@ import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.HttpsActivity;
 import com.yushilei.myapp.ui.MVPActivity;
 import com.yushilei.myapp.ui.MatrixActivity;
+import com.yushilei.myapp.ui.PageTurnActivity;
 import com.yushilei.myapp.ui.PhotoViewActivity;
 import com.yushilei.myapp.ui.ProcessIPCActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
@@ -194,6 +195,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.BezierSign:
                     context.startActivity(new Intent(context, BezierSignActivity.class));
+                    break;
+                case Constant.PageTurn:
+                    context.startActivity(new Intent(context, PageTurnActivity.class));
                     break;
             }
 
