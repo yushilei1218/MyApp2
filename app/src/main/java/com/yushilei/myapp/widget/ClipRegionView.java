@@ -3,6 +3,7 @@ package com.yushilei.myapp.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Region;
 import android.text.TextPaint;
@@ -17,7 +18,7 @@ import android.view.View;
 
 public class ClipRegionView extends View {
 
-    private TextPaint mPaint = new TextPaint();
+    private TextPaint mPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
 
     public ClipRegionView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -28,6 +29,7 @@ public class ClipRegionView extends View {
     protected void onDraw(Canvas canvas) {
         // TODO Auto-generated method stub  
         super.onDraw(canvas);
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
         canvas.drawColor(Color.LTGRAY);
         mPaint.setTextSize(40);
         drawBg(canvas);
@@ -80,7 +82,7 @@ public class ClipRegionView extends View {
         canvas.save();
         canvas.translate(0, 300);
         path.reset();
-       // canvas.clipPath(path); // makes the clip empty
+        // canvas.clipPath(path); // makes the clip empty
         path.addCircle(150, 150, 150, Path.Direction.CCW);
         canvas.clipPath(path, Region.Op.REPLACE);
         drawScene(canvas, "REPLACE-取代");

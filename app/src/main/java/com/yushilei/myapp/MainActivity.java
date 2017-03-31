@@ -1,5 +1,6 @@
 package com.yushilei.myapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 
 import com.yushilei.myapp.adapter.HomeAdapter;
 import com.yushilei.myapp.constant.Constant;
+import com.yushilei.myapp.services.WindowService;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -64,6 +66,6 @@ public class MainActivity extends AppCompatActivity {
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
-
+        startService(new Intent(this, WindowService.class));
     }
 }

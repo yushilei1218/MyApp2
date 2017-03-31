@@ -92,6 +92,9 @@
             </intent-filter>
         </service>
         <service
+            android:name=".services.WindowService"
+            android:enabled="true" />
+        <service
             android:name=".services.MyIntentService"
             android:exported="false" />
 
@@ -106,7 +109,11 @@
         <activity android:name=".ui.ThreeLevelFilterActivity" />
         <activity android:name=".ui.BezierSignActivity" />
         <activity android:name=".ui.PageTurnActivity" />
-        <activity android:name=".ui.ClipRegionActivity"></activity>
+        <activity android:name=".ui.ClipRegionActivity" />
+
+        <service
+            android:name=".services.LockScreenService"
+            android:enabled="true" />
     </application>
 
 </manifest>
