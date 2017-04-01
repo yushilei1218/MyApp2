@@ -1,5 +1,6 @@
 package com.yushilei.myapp.services;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.yushilei.myapp.R;
+import com.yushilei.myapp.util.BadgeUtil;
 
 public class LockScreenService extends Service {
 
