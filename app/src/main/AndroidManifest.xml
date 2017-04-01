@@ -114,6 +114,8 @@
         <service
             android:name=".services.LockScreenService"
             android:enabled="true" />
+
+        <activity android:name=".ui.DesignModeActivity"></activity>
     </application>
 
 </manifest>

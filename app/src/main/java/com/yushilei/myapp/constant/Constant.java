@@ -45,4 +45,5 @@ public interface Constant {
     String ThreeLevelFilter = "ThreeLevelFilter";
     String PageTurn = "PageTurn";
     String ClipRegion = "ClipRegion";
+    String DesignMode = "DesignMode";
 }

@@ -22,6 +22,7 @@ import com.yushilei.myapp.ui.ConstraintLayoutActivity;
 import com.yushilei.myapp.ui.CoodinatorActivity;
 import com.yushilei.myapp.ui.CustomDrawableActivity;
 import com.yushilei.myapp.ui.CustomRecyclerLayoutActivity;
+import com.yushilei.myapp.ui.DesignModeActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.FilterActivity;
 import com.yushilei.myapp.ui.GlideActivity;
@@ -202,6 +203,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.ClipRegion:
                     context.startActivity(new Intent(context, ClipRegionActivity.class));
+                    break;
+                case Constant.DesignMode:
+                    context.startActivity(new Intent(context, DesignModeActivity.class));
                     break;
             }
 
