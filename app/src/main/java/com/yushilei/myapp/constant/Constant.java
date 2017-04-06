@@ -46,4 +46,6 @@ public interface Constant {
     String PageTurn = "PageTurn";
     String ClipRegion = "ClipRegion";
     String DesignMode = "DesignMode";
+    String GUAGUAKA = "GuaguaKa";
+    String XuanTing = "XuanTing";
 }

@@ -115,7 +115,11 @@
             android:name=".services.LockScreenService"
             android:enabled="true" />
 
-        <activity android:name=".ui.DesignModeActivity"></activity>
+        <activity android:name=".ui.DesignModeActivity" />
+        <activity
+            android:name=".ui.GuaguaKaActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".ui.XuanTingActivity"></activity>
     </application>
 
 </manifest>

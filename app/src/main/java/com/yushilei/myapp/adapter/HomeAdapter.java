@@ -26,6 +26,7 @@ import com.yushilei.myapp.ui.DesignModeActivity;
 import com.yushilei.myapp.ui.DragActivity;
 import com.yushilei.myapp.ui.FilterActivity;
 import com.yushilei.myapp.ui.GlideActivity;
+import com.yushilei.myapp.ui.GuaguaKaActivity;
 import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.HttpsActivity;
 import com.yushilei.myapp.ui.MVPActivity;
@@ -45,8 +46,10 @@ import com.yushilei.myapp.ui.ViewStubActivity;
 import com.yushilei.myapp.ui.WebViewActivity;
 import com.yushilei.myapp.ui.WeiChatActivity;
 import com.yushilei.myapp.ui.WindowActivity;
+import com.yushilei.myapp.ui.XuanTingActivity;
 import com.yushilei.myapp.ui.XutilActivity;
 import com.yushilei.myapp.widget.DragView;
+import com.yushilei.myapp.widget.GuaguaCardView;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -206,6 +209,12 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.DesignMode:
                     context.startActivity(new Intent(context, DesignModeActivity.class));
+                    break;
+                case Constant.GUAGUAKA:
+                    context.startActivity(new Intent(context, GuaguaKaActivity.class));
+                    break;
+                case Constant.XuanTing:
+                    context.startActivity(new Intent(context, XuanTingActivity.class));
                     break;
             }
 

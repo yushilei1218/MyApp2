@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.PageTurn);
         data.add(Constant.ClipRegion);
         data.add(Constant.DesignMode);
+        data.add(Constant.GUAGUAKA);
+        data.add(Constant.XuanTing);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
