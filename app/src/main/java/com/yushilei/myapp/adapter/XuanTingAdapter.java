@@ -1,6 +1,8 @@
 package com.yushilei.myapp.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +26,12 @@ import butterknife.ButterKnife;
 public class XuanTingAdapter extends RecyclerView.Adapter<XuanTingAdapter.VH> {
     private List<Bean> data = new LinkedList<>();
     Context context;
+    private ColorDrawable yellow;
+    private ColorDrawable white;
 
     public XuanTingAdapter(Context context) {
+        yellow = new ColorDrawable(Color.YELLOW);
+        white = new ColorDrawable(Color.WHITE);
         this.context = context;
         for (int i = 0; i < 100; i++) {
             Bean bean = new Bean("i=" + i);
@@ -66,6 +72,14 @@ public class XuanTingAdapter extends RecyclerView.Adapter<XuanTingAdapter.VH> {
     public void onBindViewHolder(VH holder, int position) {
         holder.tv.setText(data.get(position).getName());
         holder.isxuanting = data.get(position).isxuanting;
+        if (data.get(position).isxuanting){
+
+            holder.itemView.setBackground(yellow);
+        }else {
+
+
+            holder.itemView.setBackground(white);
+        }
     }
 
     @Override
