@@ -69,7 +69,6 @@ public class XuanTingActivity extends BaseActivity {
 
                         } else {
                             xuantingV.setY(child.getTop() - xuantingV.getHeight());
-
                         }
                         if (previousBean != null) {
                             xuantingTv.setText(previousBean.getName());

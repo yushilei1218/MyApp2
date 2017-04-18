@@ -48,4 +48,5 @@ public interface Constant {
     String DesignMode = "DesignMode";
     String GUAGUAKA = "GuaguaKa";
     String XuanTing = "XuanTing";
+    String ClipText = "ClipText";
 }
