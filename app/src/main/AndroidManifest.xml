@@ -120,7 +120,8 @@
             android:name=".ui.GuaguaKaActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ui.XuanTingActivity" />
-        <activity android:name=".ui.ClipTextActivity"></activity>
+        <activity android:name=".ui.ClipTextActivity" />
+        <activity android:name=".ui.Coordinator2Activity"></activity>
     </application>
 
 </manifest>

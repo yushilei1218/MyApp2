@@ -49,4 +49,5 @@ public interface Constant {
     String GUAGUAKA = "GuaguaKa";
     String XuanTing = "XuanTing";
     String ClipText = "ClipText";
+    String Coordinator2 = "Coordinator2";
 }

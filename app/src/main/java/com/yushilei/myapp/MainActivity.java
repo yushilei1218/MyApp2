@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.GUAGUAKA);
         data.add(Constant.XuanTing);
         data.add(Constant.ClipText);
+        data.add(Constant.Coordinator2);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
