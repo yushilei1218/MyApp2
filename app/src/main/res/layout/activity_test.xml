@@ -14,11 +14,11 @@
     tools:context="com.yushilei.myapp.ui.TestActivity">
 
     <ImageView
-        android:layout_marginLeft="-10dp"
         android:id="@+id/test_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="15dp"
         android:src="@mipmap/round_img" />
 
     <android.support.v7.widget.RecyclerView
