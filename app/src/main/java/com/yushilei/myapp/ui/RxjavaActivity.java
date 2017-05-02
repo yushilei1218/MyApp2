@@ -28,16 +28,11 @@ public class RxjavaActivity extends BaseActivity {
     }
 
     public void btnRx(View view) {
-        List<Integer> data = new LinkedList<>();
-        for (int i = 0; i < 10; i++) {
-            data.add(i);
-        }
-        Observable<Integer> observable = Observable.from(data);
-
-        Subscriber<Integer> subscriber = new Subscriber<Integer>() {
+        Observable<Integer> observable = Observable.just(1, 2, 3, 4, 5, 6, 7);
+        Subscriber<Integer> s = new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
-                Log.i(getTAG(), "onCompleted " + Thread.currentThread().getName() + " ");
+
             }
 
             @Override
@@ -47,17 +42,16 @@ public class RxjavaActivity extends BaseActivity {
 
             @Override
             public void onNext(Integer integer) {
-                Log.i(getTAG(), "onNext " + Thread.currentThread().getName() + " " + integer.toString());
+                Log.i(getTAG(), "Subscriber onNext=" + Thread.currentThread().getName() + " " + integer);
             }
         };
-
         observable.filter(new Func1<Integer, Boolean>() {
             @Override
             public Boolean call(Integer integer) {
-                Log.i(getTAG(), "Call" + Thread.currentThread().getName());
-                return integer % 2 == 0;
-            }
-        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(subscriber);
+                Log.i(getTAG(), "Func1 call=" + Thread.currentThread().getName() + " " + integer);
 
+                return integer % 2 == 1;
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(s);
     }
 }
