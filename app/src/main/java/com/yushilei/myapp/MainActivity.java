@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.XuanTing);
         data.add(Constant.ClipText);
         data.add(Constant.Coordinator2);
+        data.add(Constant.ClassLoader);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

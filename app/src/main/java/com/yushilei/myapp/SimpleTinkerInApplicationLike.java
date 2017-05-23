@@ -12,6 +12,7 @@ import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.loader.app.ApplicationLike;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 import com.yushilei.myapp.db.DbUtil;
+import com.yushilei.myapp.entitys.MyClassLoader;
 
 import org.xutils.x;
 
@@ -39,6 +40,7 @@ public class SimpleTinkerInApplicationLike extends ApplicationLike {
     public void onCreate() {
         super.onCreate();
         application = getApplication();
+        // Thread.currentThread().setContextClassLoader(new MyClassLoader());
         Log.i("TinkerApp", getProcessName(getApplication(), Process.myPid()));
 
         TinkerInstaller.install(this);

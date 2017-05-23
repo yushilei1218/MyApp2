@@ -50,4 +50,5 @@ public interface Constant {
     String XuanTing = "XuanTing";
     String ClipText = "ClipText";
     String Coordinator2 = "Coordinator2";
+    String ClassLoader = "ClassLoader";
 }

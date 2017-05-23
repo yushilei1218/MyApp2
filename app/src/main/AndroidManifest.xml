@@ -121,7 +121,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ui.XuanTingActivity" />
         <activity android:name=".ui.ClipTextActivity" />
-        <activity android:name=".ui.Coordinator2Activity"></activity>
+        <activity android:name=".ui.Coordinator2Activity" />
+        <activity android:name=".ui.ClassLoaderActivity"></activity>
     </application>
 
 </manifest>

@@ -56,6 +56,7 @@ public class TestActivity extends BaseActivity {
     @Override
     protected void onInitViews() {
 
+
         recyclerView.setAdapter(new RecyAdapter(this));
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);

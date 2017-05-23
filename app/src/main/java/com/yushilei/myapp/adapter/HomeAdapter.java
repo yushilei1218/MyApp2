@@ -17,6 +17,7 @@ import com.yushilei.myapp.ui.AppBarLayoutActivity;
 import com.yushilei.myapp.ui.BezierActivity;
 import com.yushilei.myapp.ui.BezierSignActivity;
 import com.yushilei.myapp.ui.CCBActivity;
+import com.yushilei.myapp.ui.ClassLoaderActivity;
 import com.yushilei.myapp.ui.ClipRegionActivity;
 import com.yushilei.myapp.ui.ClipTextActivity;
 import com.yushilei.myapp.ui.ConstraintLayoutActivity;
@@ -223,6 +224,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Coordinator2:
                     context.startActivity(new Intent(context, Coordinator2Activity.class));
+                    break;
+                case Constant.ClassLoader:
+                    context.startActivity(new Intent(context, ClassLoaderActivity.class));
                     break;
             }
 
