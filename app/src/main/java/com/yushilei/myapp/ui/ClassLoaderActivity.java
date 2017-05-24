@@ -24,10 +24,14 @@ public class ClassLoaderActivity extends BaseActivity {
         ClassLoader classLoader = this.getClassLoader();
 
         Log.i(getTAG(), classLoader.toString());
-//        URLClassLoader;
+        ClassLoader contextClassLoader = getApplication().getApplicationContext().getClassLoader();
+        Log.i(getTAG(), contextClassLoader.toString());
+//        ClassLoader
+////        URLClassLoader;
 //        PathClassLoader;
 //        DexClassLoader;
-//        Thread.currentThread().setContextClassLoader();
+////        Thread.currentThread().setContextClassLoader();
 
     }
+
 }
