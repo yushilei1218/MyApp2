@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(Constant.ClipText);
         data.add(Constant.Coordinator2);
         data.add(Constant.ClassLoader);
+        data.add(Constant.Intent);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

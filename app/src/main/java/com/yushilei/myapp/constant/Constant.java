@@ -51,4 +51,6 @@ public interface Constant {
     String ClipText = "ClipText";
     String Coordinator2 = "Coordinator2";
     String ClassLoader = "ClassLoader";
+    String Intent = "Intent";
+    String Camera = "Camera";
 }
