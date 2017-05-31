@@ -1,7 +1,11 @@
 package com.yushilei.myapp;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,17 +23,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @BindView(R.id.grid)
     GridView grid;
     @BindView(R.id.round)
     ImageView img;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected void onInitViews() {
         HomeAdapter adapter = new HomeAdapter(this);
 
         List<String> data = new LinkedList<>();
@@ -77,5 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.addAll(data);
         startService(new Intent(this, WindowService.class));
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
     }
 }

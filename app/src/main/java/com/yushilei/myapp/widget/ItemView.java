@@ -35,7 +35,6 @@ public class ItemView extends TextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Log.i(TAG, "ItemView onDraw");
         super.onDraw(canvas);
     }
 }
