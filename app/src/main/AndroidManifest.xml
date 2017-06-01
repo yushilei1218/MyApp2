@@ -125,7 +125,11 @@
         <activity android:name=".ui.Coordinator2Activity" />
         <activity android:name=".ui.ClassLoaderActivity" />
         <activity android:name=".ui.IntentActivity" />
-        <activity android:name=".ui.CameraActivity"></activity>
+        <activity android:name=".ui.CameraActivity" />
+        <activity
+            android:name=".ui.Filter2Activity"
+            android:label="@string/title_activity_filter2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

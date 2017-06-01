@@ -27,6 +27,7 @@ import com.yushilei.myapp.ui.CustomDrawableActivity;
 import com.yushilei.myapp.ui.CustomRecyclerLayoutActivity;
 import com.yushilei.myapp.ui.DesignModeActivity;
 import com.yushilei.myapp.ui.DragActivity;
+import com.yushilei.myapp.ui.Filter2Activity;
 import com.yushilei.myapp.ui.FilterActivity;
 import com.yushilei.myapp.ui.GlideActivity;
 import com.yushilei.myapp.ui.GuaguaKaActivity;
@@ -231,6 +232,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Intent:
                     context.startActivity(new Intent(context, IntentActivity.class));
+                    break;
+                case Constant.Filter2:
+                    context.startActivity(new Intent(context, Filter2Activity.class));
                     break;
             }
 

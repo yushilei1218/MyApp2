@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yushilei.myapp.ui.Filter2Activity">
+
+    <Button
+        android:id="@+id/btn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="位置信息" />
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_test"
+        android:text="Test"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_add_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+        android:text="删除或者添加" />
+
+    <FrameLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_location"
+        android:background="#55000000"
+        android:layoutAnimation="@anim/layout_animation">
+
+        <View
+            android:id="@+id/content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#F00" />
+    </FrameLayout>
+
+
+</RelativeLayout>
