@@ -129,7 +129,8 @@
         <activity
             android:name=".ui.Filter2Activity"
             android:label="@string/title_activity_filter2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.MyPtrActivity"></activity>
     </application>
 
 </manifest>

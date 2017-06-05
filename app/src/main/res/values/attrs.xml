@@ -3,4 +3,7 @@
     <declare-styleable name="GuaguaCardView">
         <attr name="w_h_ratio" format="float" />
     </declare-styleable>
+    <declare-styleable name="PtrLayout">
+        <attr name="layout_header" format="reference" />
+    </declare-styleable>
 </resources>

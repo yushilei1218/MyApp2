@@ -36,6 +36,7 @@ import com.yushilei.myapp.ui.HttpsActivity;
 import com.yushilei.myapp.ui.IntentActivity;
 import com.yushilei.myapp.ui.MVPActivity;
 import com.yushilei.myapp.ui.MatrixActivity;
+import com.yushilei.myapp.ui.MyPtrActivity;
 import com.yushilei.myapp.ui.PageTurnActivity;
 import com.yushilei.myapp.ui.PhotoViewActivity;
 import com.yushilei.myapp.ui.ProcessIPCActivity;
@@ -235,6 +236,9 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.Filter2:
                     context.startActivity(new Intent(context, Filter2Activity.class));
+                    break;
+                case Constant.PTR:
+                    context.startActivity(new Intent(context, MyPtrActivity.class));
                     break;
             }
 

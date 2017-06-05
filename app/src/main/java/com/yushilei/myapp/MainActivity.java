@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity {
         data.add(Constant.ClassLoader);
         data.add(Constant.Intent);
         data.add(Constant.Filter2);
+        data.add(Constant.PTR);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);

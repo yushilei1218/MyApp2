@@ -54,4 +54,5 @@ public interface Constant {
     String Intent = "Intent";
     String Camera = "Camera";
     String Filter2 = "Filter2";
+    String PTR = "PTR";
 }
