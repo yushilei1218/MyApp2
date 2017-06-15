@@ -53,6 +53,8 @@ public interface Constant {
     String ClassLoader = "ClassLoader";
     String Intent = "Intent";
     String Camera = "Camera";
+    String Camera2 = "Camera2";
     String Filter2 = "Filter2";
     String PTR = "PTR";
+    String JNI = "JNI";
 }

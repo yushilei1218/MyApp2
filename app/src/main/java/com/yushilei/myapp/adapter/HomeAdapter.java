@@ -34,6 +34,7 @@ import com.yushilei.myapp.ui.GuaguaKaActivity;
 import com.yushilei.myapp.ui.HandlerActivity;
 import com.yushilei.myapp.ui.HttpsActivity;
 import com.yushilei.myapp.ui.IntentActivity;
+import com.yushilei.myapp.ui.JNIActivity;
 import com.yushilei.myapp.ui.MVPActivity;
 import com.yushilei.myapp.ui.MatrixActivity;
 import com.yushilei.myapp.ui.MyPtrActivity;
@@ -239,6 +240,12 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.PTR:
                     context.startActivity(new Intent(context, MyPtrActivity.class));
+                    break;
+                case Constant.Camera2:
+                    context.startActivity(new Intent(context, MyPtrActivity.class));
+                    break;
+                case Constant.JNI:
+                    context.startActivity(new Intent(context, JNIActivity.class));
                     break;
             }
 
