@@ -132,7 +132,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.MyPtrActivity" />
         <activity android:name=".ui.CameraV2Activity" />
-        <activity android:name=".ui.JNIActivity"></activity>
+        <activity android:name=".ui.JNIActivity" />
+        <activity android:name=".ui.RenderScriptActivity"></activity>
     </application>
 
 </manifest>

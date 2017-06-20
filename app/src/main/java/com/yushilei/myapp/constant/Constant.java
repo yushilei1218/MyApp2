@@ -57,4 +57,5 @@ public interface Constant {
     String Filter2 = "Filter2";
     String PTR = "PTR";
     String JNI = "JNI";
+    String RenderScript = "RenderScript";
 }

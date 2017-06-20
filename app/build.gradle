@@ -16,6 +16,10 @@ android {
         applicationId "com.yushilei.myapp"
         minSdkVersion 14
         targetSdkVersion 23
+
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

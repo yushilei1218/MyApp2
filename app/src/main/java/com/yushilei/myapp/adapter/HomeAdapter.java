@@ -42,6 +42,7 @@ import com.yushilei.myapp.ui.PageTurnActivity;
 import com.yushilei.myapp.ui.PhotoViewActivity;
 import com.yushilei.myapp.ui.ProcessIPCActivity;
 import com.yushilei.myapp.ui.RemoteViewsActivity;
+import com.yushilei.myapp.ui.RenderScriptActivity;
 import com.yushilei.myapp.ui.RetrofitRxJavaActivity;
 import com.yushilei.myapp.ui.RxjavaActivity;
 import com.yushilei.myapp.ui.SocketActivity;
@@ -246,6 +247,8 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                     break;
                 case Constant.JNI:
                     context.startActivity(new Intent(context, JNIActivity.class));
+                    break;case Constant.RenderScript:
+                    context.startActivity(new Intent(context, RenderScriptActivity.class));
                     break;
             }
 

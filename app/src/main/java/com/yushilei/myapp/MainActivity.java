@@ -80,6 +80,7 @@ public class MainActivity extends BaseActivity {
         data.add(Constant.PTR);
         data.add(Constant.Camera2);
         data.add(Constant.JNI);
+        data.add(Constant.RenderScript);
         grid.setAdapter(adapter);
 
         adapter.addAll(data);
